@@ -11,3 +11,9 @@ https://combo-jouuue-nu.vercel.app
 ## git
 
 https://github.com/ahmedghazi/combo--jouuue
+
+## deploy
+
+```bash
+vercel --prod
+```
