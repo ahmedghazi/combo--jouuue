@@ -1,37 +1,39 @@
 import {defineField} from 'sanity'
-import {BiCarousel} from 'react-icons/bi'
+import {BsLayoutThreeColumns} from 'react-icons/bs'
 
 export default defineField({
-  name: 'sliderUI',
-  title: 'Slider UI',
+  name: 'imagesUI',
+  title: 'Image(s)',
   type: 'object',
-  icon: BiCarousel,
+  icon: BsLayoutThreeColumns,
   fields: [
     defineField({
       name: 'title',
       type: 'string',
+      description: 'Module title (displayed only in the admin)',
     }),
     defineField({
-      name: 'images',
+      name: 'items',
       type: 'array',
       of: [
         {
-          type: 'image',
+          type: 'figure',
         },
       ],
     }),
   ],
+
   preview: {
     select: {
       title: 'title',
-      media: 'images.0',
+      items: 'items',
     },
     prepare(selection) {
-      const {title, media} = selection
+      const {title, items} = selection
       return {
         title: title,
-        subtitle: 'Slider UI',
-        media: media,
+        subtitle: `Image(s) UI ${items.length} items`,
+        media: items?.[0].image,
       }
     },
   },

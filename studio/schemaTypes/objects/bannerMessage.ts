@@ -16,7 +16,7 @@ export default defineField({
     defineField({
       name: 'message',
       title: 'Message',
-      type: 'localeText',
+      type: 'text',
     }),
   ],
 })

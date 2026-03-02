@@ -12,18 +12,6 @@ export default defineType({
   type: 'document',
   title: 'Page Modulaire',
   icon: StackIcon,
-  validation: (Rule) =>
-    Rule.custom((fields) => {
-      return fields && fields.seo ? true : 'SEO needed'
-    }),
-  preview: {
-    select: {
-      title: 'seo.metaTitle',
-      subtitle: 'seo.metaDescription',
-      media: 'seo.metaImage',
-    },
-  },
-
   groups: [
     {
       default: true,
@@ -44,23 +32,19 @@ export default defineType({
     }),
 
     defineField({
-      name: 'supTitle',
-      type: 'string',
-      title: 'Surtitre',
-      group: 'editorial',
-    }),
-    defineField({
       name: 'title',
       type: 'string',
       title: 'Titre',
       description: 'Le nom de la page',
       group: 'editorial',
     }),
+
     defineField({
       name: 'subTitle',
       type: 'string',
       title: 'Soustitre',
       group: 'editorial',
+      description: 'Visible dans les listes page, dans la card (cartouche fond noir)',
     }),
     defineField({
       name: 'slug',
@@ -75,17 +59,35 @@ export default defineType({
       group: 'editorial',
     }),
     defineField({
-      name: 'imageCover',
-      type: 'image',
-      title: 'Image clef',
-      description: 'Visible on liste pages, page cards (largeur 1400px)',
+      name: 'subMenu',
+      title: 'Sous menu',
+      description:
+        'basé sur les slugs (ancre) des modules, générer le slug depuis le module, et mettre le slug dans le champs val',
+      type: 'array',
+      of: [
+        {
+          type: 'keyVal',
+        },
+      ],
       group: 'editorial',
     }),
     defineField({
-      name: 'imageHero',
-      type: 'image',
-      title: 'Image Hero',
-      description: 'Visible on single page before the title',
+      name: 'tags',
+      title: 'Tags',
+      type: 'array',
+      of: [
+        {
+          type: 'reference',
+          to: [{type: 'tag'}],
+        },
+      ],
+      group: 'editorial',
+    }),
+    defineField({
+      name: 'imageCover',
+      type: 'figure',
+      title: 'Image clef',
+      description: 'Visible dans les listes page, dans la card (1400px)',
       group: 'editorial',
     }),
     defineField({
@@ -95,18 +97,23 @@ export default defineType({
       group: 'editorial',
     }),
     defineField({
-      name: 'text',
-      title: 'Texte',
-      type: 'blockContent',
+      name: 'modules',
+      title: 'Modules',
+      description: 'Zone de contenu Modulaire (images, textes, embed)',
+      type: 'array',
+      of: modulesList,
       group: 'editorial',
     }),
-    // defineField({
-    //   name: 'modules',
-    //   title: 'Modules',
-    //   description: 'Zone de contenu Modulaire (images, textes, embed)',
-    //   type: 'array',
-    //   of: modulesList,
-    //   group: 'editorial',
-    // }),
   ],
+  validation: (Rule) =>
+    Rule.custom((fields) => {
+      return fields && fields.seo ? true : 'SEO needed'
+    }),
+  preview: {
+    select: {
+      title: 'seo.metaTitle',
+      subtitle: 'seo.metaDescription',
+      media: 'seo.metaImage',
+    },
+  },
 })

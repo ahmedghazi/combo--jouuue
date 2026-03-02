@@ -2,13 +2,18 @@
  *******************/
 :root {
   --app-height: 100vh;
-  --header-height: 43.5px;
+  --header-h: 43.5px;
+  --color-bg: white;
   --color-hover: #ff5a00;
+  --color-primary: #000;
+  --color-secondary: #fff;
   // --color-muted: #999999;
   --color-blue: #ff5a00;
+  --color-accent: #ff5a00;
 
   --font-serif: "Lastik-Free", serif;
-  --font-sans: "NTBau-Regular", "Helvetica Neue", "HelveticaNeueRoman",
+  --font-sans:
+    "NTBau-Regular", "Helvetica Neue", "HelveticaNeueRoman",
     "HelveticaNeue-Roman", "Helvetica Neue Roman", "TeXGyreHerosRegular",
     "Helvetica", "Arial", sans-serif;
 
@@ -18,6 +23,16 @@
   --space-lg: 3.125rem; //50
   --space-xl: 5rem; //80
   --space-xxl: 6.25rem; //100
+
+  --spacing-xs: 0.4em;
+  --spacing-sm: 0.625em;
+  --spacing-md: 1.25rem;
+  --spacing-lg: 1.875rem;
+  --spacing-50: 3.125rem;
+  --spacing-xl: 3.75rem;
+  --spacing-xxl: 6.25rem;
+
+  --spacing-m-md: 1.25rem;
 
   --text-md-mobile: 1rem; //16px
 

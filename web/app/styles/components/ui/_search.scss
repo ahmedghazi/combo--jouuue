@@ -23,10 +23,10 @@
   }
   &--modal {
     position: fixed;
-    height: calc(var(--vh) * 100 - var(--header-height));
+    height: calc(var(--vh) * 100 - var(--header-h));
     max-height: unset;
     inset: 0;
-    top: var(--header-height);
+    top: var(--header-h);
     background-color: white;
     color: black;
     z-index: 49;
@@ -47,7 +47,7 @@
       // background-color: red;
     }
     .body {
-      max-height: calc(var(--vh) * 100 - var(--header-height));
+      max-height: calc(var(--vh) * 100 - var(--header-h));
       overflow-y: auto;
     }
   }

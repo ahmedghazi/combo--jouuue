@@ -36,6 +36,28 @@ export async function getSettings(): Promise<Settings> {
             _type,
             slug
           }
+        },
+        _type == 'menuItem' => {
+          ...,
+          link{
+            ...,
+            link->{
+              _type,
+              slug,
+              subMenu
+            }
+          },
+          subMenu[]{
+            ...,
+            _type == 'linkInternal' => {
+              ...,
+              link->{
+                _type,
+                slug,
+                subMenu
+              },
+            },
+          }
         }
       },
       navPublishers[]{
@@ -49,7 +71,7 @@ export async function getSettings(): Promise<Settings> {
         }
       }
 
-    }`
+    }`,
   );
 }
 

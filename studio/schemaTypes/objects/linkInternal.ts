@@ -1,5 +1,6 @@
 // import supportedLanguages from "../locale/supportedLanguages";
 import {defineField} from 'sanity'
+import linkInternalTypes from '../misc/linkInternalTypes'
 
 export default defineField({
   title: 'Link Internal',
@@ -26,7 +27,12 @@ export default defineField({
       name: 'link',
       type: 'reference',
       weak: true,
-      to: [{type: 'home'}, {type: 'product'}, {type: 'publisher'}, {type: 'infos'}],
+      to: linkInternalTypes,
+    }),
+    defineField({
+      name: 'cta',
+      type: 'boolean',
+      description: 'Look Bouton avec outline',
     }),
   ],
 })

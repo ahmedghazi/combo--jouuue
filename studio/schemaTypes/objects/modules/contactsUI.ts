@@ -1,37 +1,32 @@
 import {defineField} from 'sanity'
-import {BiCarousel} from 'react-icons/bi'
+import {MdConnectWithoutContact} from 'react-icons/md'
 
 export default defineField({
-  name: 'sliderUI',
-  title: 'Slider UI',
+  name: 'contactsUI',
+  title: 'Contacts UI',
   type: 'object',
-  icon: BiCarousel,
+  icon: MdConnectWithoutContact,
   fields: [
     defineField({
       name: 'title',
       type: 'string',
+      title: 'Titre',
     }),
     defineField({
-      name: 'images',
+      name: 'items',
       type: 'array',
-      of: [
-        {
-          type: 'image',
-        },
-      ],
+      of: [{type: 'blockContent'}],
     }),
   ],
   preview: {
     select: {
-      title: 'title',
-      media: 'images.0',
+      title: `title`,
     },
     prepare(selection) {
-      const {title, media} = selection
+      const {title} = selection
       return {
         title: title,
-        subtitle: 'Slider UI',
-        media: media,
+        // subtitle: 'Intertitre',
       }
     },
   },

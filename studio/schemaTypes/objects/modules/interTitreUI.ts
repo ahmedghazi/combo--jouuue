@@ -1,32 +1,27 @@
 import {defineField} from 'sanity'
-import {ImEmbed} from 'react-icons/im'
+import {PiTextAaBold} from 'react-icons/pi'
 
 export default defineField({
-  name: 'moduleEmbed',
-  title: 'Embed',
+  name: 'moduleInterTitre',
+  title: 'Intertitre',
   type: 'object',
-  icon: ImEmbed,
+  icon: PiTextAaBold,
   fields: [
     defineField({
       name: 'title',
       type: 'string',
-      title: 'Title',
-      description: 'Title',
-    }),
-    defineField({
-      name: 'embed',
-      type: 'embed',
+      title: 'Titre',
     }),
   ],
   preview: {
     select: {
-      title: 'title',
+      title: `title`,
     },
     prepare(selection) {
       const {title} = selection
       return {
         title: title,
-        subtitle: 'Embed',
+        subtitle: 'Intertitre',
       }
     },
   },

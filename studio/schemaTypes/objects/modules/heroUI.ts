@@ -1,37 +1,34 @@
 import {defineField} from 'sanity'
-import {BiCarousel} from 'react-icons/bi'
+import {FiImage} from 'react-icons/fi'
 
 export default defineField({
-  name: 'sliderUI',
-  title: 'Slider UI',
+  name: 'heroUI',
+  title: 'Hero UI',
   type: 'object',
-  icon: BiCarousel,
+  icon: FiImage,
   fields: [
     defineField({
       name: 'title',
       type: 'string',
+      description: 'Module title (displayed only in the admin)',
     }),
     defineField({
-      name: 'images',
-      type: 'array',
-      of: [
-        {
-          type: 'image',
-        },
-      ],
+      name: 'image',
+      type: 'figure',
     }),
   ],
+
   preview: {
     select: {
+      image: 'image.image',
       title: 'title',
-      media: 'images.0',
     },
     prepare(selection) {
-      const {title, media} = selection
+      const {title, image} = selection
       return {
         title: title,
-        subtitle: 'Slider UI',
-        media: media,
+        subtitle: 'Hero UI',
+        media: image,
       }
     },
   },

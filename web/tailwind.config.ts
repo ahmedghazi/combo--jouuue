@@ -25,7 +25,7 @@ const config: Config = {
       lg: "var(--space-lg)",
       xl: "var(--space-xl)",
       gutter: "var(--gutter)",
-      "header-height": "var(--header-height)",
+      "header-height": "var(--header-h)",
     },
     colors: {
       black: "black",

@@ -5,4 +5,5 @@ export default defineCliConfig({
     projectId: '46r22z78',
     dataset: 'production',
   },
+  studioHost: 'backoffice--combo-editions',
 })

@@ -1,11 +1,11 @@
 import {defineField} from 'sanity'
-import {ImEmbed} from 'react-icons/im'
+import {FiPlay} from 'react-icons/fi'
 
 export default defineField({
-  name: 'moduleEmbed',
-  title: 'Embed',
+  name: 'module.video',
+  title: 'Video',
   type: 'object',
-  icon: ImEmbed,
+  icon: FiPlay,
   fields: [
     defineField({
       name: 'title',
@@ -14,8 +14,15 @@ export default defineField({
       description: 'Title',
     }),
     defineField({
-      name: 'embed',
-      type: 'embed',
+      name: 'video',
+      type: 'video',
+      title: 'Video',
+    }),
+
+    defineField({
+      name: 'caption',
+      type: 'text',
+      title: 'Video caption',
     }),
   ],
   preview: {
@@ -26,7 +33,7 @@ export default defineField({
       const {title} = selection
       return {
         title: title,
-        subtitle: 'Embed',
+        subtitle: 'Video',
       }
     },
   },

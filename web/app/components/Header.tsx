@@ -1,159 +1,139 @@
 "use client";
-import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { Settings } from "../types/schema";
-import { _linkResolver, getScrollingElement } from "../utils/utils";
+import Link from "next/link";
+// import Marquee from "./ui/Marquee";
+import { useScroll } from "../hooks/useScroll";
+import Burger from "./ui/Burger";
+// import Marquee from "./ui/Marquee";
+import NavPrimary from "./NavPrimary";
 import Cart from "./shop/Cart";
-import Mailchimp from "./ui/Mailchimp";
-import Search from "./ui/Search";
-import clsx from "clsx";
-import { usePathname } from "next/navigation";
 
 type Props = {
   settings: Settings;
 };
 
 const Header = ({ settings }: Props) => {
-  const [open, setOpen] = useState<boolean>(false);
-  const [direction, setDirection] = useState<string>("");
-  const pathname = usePathname();
+  // const logo = settings.comboStudioLogo;
 
-  useEffect(() => {
-    setOpen(false);
-  }, [pathname]);
-
-  useEffect(() => {
-    _onScroll();
-    window.addEventListener("scroll", _onScroll);
-
-    return () => {
-      window.removeEventListener("scroll", _onScroll);
-    };
-  }, []);
-
-  const _onScroll = () => {
-    const scroller = getScrollingElement();
-    if (!scroller) return;
-
-    const scrollTop =
-      (window.pageYOffset || scroller.scrollTop) - (scroller.clientTop || 0);
-    const lastscrollTop = scroller.dataset.lastscrollTop || 0;
-
-    if (scrollTop === 0) {
-      setDirection("");
-      return;
-    }
-    if (lastscrollTop) {
-      const direction =
-        parseFloat(lastscrollTop) > scrollTop ? "scroll--up" : "scroll--down";
-      setDirection(direction);
-    }
-  };
-
-  const _isCurrent = (url: string) => {
-    return url === pathname ? "is-current" : "";
-  };
+  const { scrollDirection, scrollY } = useScroll();
 
   return (
-    <header className={direction}>
-      <div className='header-mobile'>
-        <div className='flex justify-between '>
-          <button onClick={() => setOpen(!open)}>
-            <span>{open ? "Fermer" : "Menu"}</span>
-          </button>
-          <Cart />
+    <header
+      className={`is-${
+        scrollY > 100 && scrollDirection ? scrollDirection : ""
+      }`}>
+      {/* {settings.marqueeTopNav && (
+        <div className='marquee-wrapper text-sm'>
+          <Marquee
+            text={settings.marqueeTopNav}
+            foregroundColor='#000'
+            backgroundColor='#ffdc00'
+          />
         </div>
-        <div className={clsx("overlay", open && "is-open")}>
-          <nav id='nav-primary'>
-            <ul className='md:flex justify-between'>
-              {settings.navPrimary?.map((item, i) => (
-                <li key={i}>
-                  <Link
-                    href={_linkResolver(item.link)}
-                    className={_isCurrent(_linkResolver(item.link))}>
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-              <li>
-                <Search />
-              </li>
-              {settings.newsletterUrl && (
-                <li>
-                  <Mailchimp
-                    action={settings.newsletterUrl}
-                    field={{
-                      name: "EMAIL",
-                      placeholder: "NEWSLETTER",
-                      type: "email",
-                      required: true,
-                    }}
-                  />
-                </li>
-              )}
-            </ul>
-          </nav>
-          <nav className='nav-publishers'>
-            <ul className='md:flex'>
-              {settings.navPublishers?.map((item, i) => (
-                <li key={i}>
-                  <Link
-                    href={_linkResolver(item.link)}
-                    className={_isCurrent(_linkResolver(item.link))}>
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
-        </div>
-      </div>
-      <div className='header-desktop'>
-        <nav id='nav-primary'>
-          <ul className='flex justify-between'>
-            {settings.navPrimary?.map((item, i) => (
-              <li key={i}>
-                <Link
-                  href={_linkResolver(item.link)}
-                  className={_isCurrent(_linkResolver(item.link))}>
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-            <li>
-              <Search />
-            </li>
-            {settings.newsletterUrl && (
-              <li>
-                <Mailchimp
-                  action={settings.newsletterUrl}
-                  field={{
-                    name: "EMAIL",
-                    placeholder: "NEWSLETTER",
-                    type: "email",
-                    required: true,
-                  }}
+      )} */}
+      <div className='inner'>
+        <div className='flex justify-between md:justify-start gap-lg  items-center'>
+          <div className='logo logo--combo'>
+            <Link href={"/"}>
+              <svg
+                width='163'
+                height='46'
+                viewBox='0 0 163 46'
+                fill='none'
+                xmlns='http://www.w3.org/2000/svg'>
+                <path
+                  d='M109.068 24.7405H106.537V32.0048H109.411C112.133 32.0048 113.818 30.7822 113.818 28.3726C113.818 25.6563 112.093 24.7405 109.068 24.7405Z'
+                  // fill='white'
                 />
-              </li>
-            )}
-            <li>
-              <Cart />
-            </li>
-          </ul>
-        </nav>
-        <nav className='nav-publishers'>
-          <ul className='flex'>
-            {settings.navPublishers?.map((item, i) => (
-              <li key={i}>
-                <Link
-                  href={_linkResolver(item.link)}
-                  className={_isCurrent(_linkResolver(item.link))}>
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
+                <path
+                  d='M52.8938 13.7284C49.828 13.7284 48.6025 17.4761 48.6025 23.1311C48.6025 28.7861 49.828 32.4983 52.8938 32.4983C55.9596 32.4983 57.2608 28.9417 57.2608 23.1311C57.2608 17.3205 55.9596 13.7284 52.8938 13.7284Z'
+                  // fill='white'
+                />
+                <path
+                  d='M113.439 17.0538C113.439 15.2177 112.098 14.3375 109.723 14.3375H106.541V20.2636H109.531C112.098 20.2636 113.439 19.3478 113.439 17.0538Z'
+                  // fill='white'
+                />
+                <path
+                  d='M133.518 13.7284C130.452 13.7284 129.227 17.4761 129.227 23.1311C129.227 28.7861 130.452 32.4983 133.518 32.4983C136.584 32.4983 137.885 28.9417 137.885 23.1311C137.885 17.3205 136.584 13.7284 133.518 13.7284Z'
+                  // fill='white'
+                />
+                <path
+                  d='M0 0V46H163V0H0ZM29.5574 36.9752C22.6994 36.9752 19.442 31.5469 19.442 22.9044C19.442 14.2619 22.6994 8.83367 29.6732 8.83367C36.0321 8.83367 38.9865 12.4658 38.9865 18.6187H32.895C32.895 15.8268 32.2043 13.4972 29.5975 13.4972C26.2242 13.4972 25.4221 16.8227 25.4221 22.9C25.4221 28.9773 26.5317 32.3027 29.7891 32.3027C32.2399 32.3027 33.1223 30.5422 33.1223 27.6391H39.2138C39.2138 33.3741 35.8048 36.9663 29.5574 36.9663V36.9752ZM52.894 37.1663C46.0717 37.1663 42.8544 31.5825 42.8544 23.1356C42.8544 14.6887 46.0717 9.06485 52.894 9.06485C59.7163 9.06485 62.9336 14.6087 62.9336 23.1356C62.9336 31.6625 59.7163 37.1663 52.894 37.1663ZM94.7012 36.6284H89.1846L89.2247 15.4089L83.7436 36.6284H78.9533L73.4367 15.4089L73.5124 36.6284H67.9557V9.67836H76.4223L81.3284 29.2129L86.2346 9.67836H94.7012V36.6328V36.6284ZM110.333 36.6684H100.984V9.67836H110.872C116.429 9.67836 119.263 11.9323 119.263 16.3692C119.263 18.6632 117.962 21.4151 114.05 22.4109C117.958 23.4068 119.647 26.3854 119.647 29.1373C119.647 33.8409 116.389 36.6684 110.333 36.6684ZM133.518 37.1663C126.696 37.1663 123.479 31.5825 123.479 23.1356C123.479 14.6887 126.696 9.06485 133.518 9.06485C140.341 9.06485 143.558 14.6087 143.558 23.1356C143.558 31.6625 140.341 37.1663 133.518 37.1663Z'
+                  fill='white'
+                />
+              </svg>
+            </Link>
+          </div>
+          <div className='flex-2'>
+            <Burger />
+            {settings.navPrimary && <NavPrimary input={settings.navPrimary} />}
+          </div>
+
+          <div className='logo logo--editions'>
+            <Link href={"/"}>
+              <svg
+                width='118,68'
+                height='30'
+                fill='none'
+                viewBox='0 0 182 46'
+                xmlns='http://www.w3.org/2000/svg'>
+                <path
+                  d='M12.9,0.9C13.1,0.3,13.6,0,14.2,0h5.3c0.9,0,1.2,0.6,0.6,1.3l-8.7,9.8c-0.4,0.5-0.8,0.6-1.1,0.4c-0.3-0.2-0.4-0.6-0.2-1.2
+	L12.9,0.9L12.9,0.9z M5.6,24.5h10.1c0.7,0,1.1-0.4,0.9-1.1c-0.6-3.8-2.3-6.5-5.7-6.5c-3.3,0-5.4,2.9-6.3,6.5
+	C4.5,24.1,4.9,24.5,5.6,24.5 M0,30.4c0-7.1,3.3-16.1,12.4-16.1c6.8,0,10.1,4.6,10.8,11.2c0.1,0.7-0.3,1.1-1.1,1.1H5.6
+	c-0.7,0-1.1,0.4-1.1,1.1C5.1,34,8,40.5,14.2,40.5c3.9,0,5.9-2.5,7.4-5.9c0.3-0.6,0.6-0.9,1.1-0.8c0.5,0.2,0.6,0.5,0.5,1.1
+	c-1.3,5.4-5,11-11.6,11C3.8,46,0,37.9,0,30.4'
+                />
+                <path
+                  d='M39.9,42.2c1.8,0,3.5-0.8,4.9-2.3c0.4-0.4,0.5-0.8,0.5-1.3V23.8c0-3.2-2.3-7.2-6.4-7.2c-5.3,0-6.9,7.2-6.9,12.2
+	C32,34.3,34.1,42.2,39.9,42.2 M26.3,31.3c0-7.4,4.3-17,13.1-17c1.5,0,2.8,0.3,4.6,1.3c0.8,0.4,1.3,0.1,1.3-0.7v-3.4
+	c0-3.7,0.2-6.4-2.6-5.8c-0.8,0.2-1.3,0.1-1.6-0.4c-0.2-0.5,0.1-1.1,0.9-1.5l3.4-1.5l3-1.3c0.5-0.2,0.9-0.3,1.3-0.3
+	c0.5,0,0.8,0.4,0.8,1.1V35c0,3.7-0.2,6.4,2.6,5.8c0.8-0.2,1.3-0.1,1.6,0.4c0.2,0.5-0.1,1.1-0.9,1.5l-3.4,1.5l-3,1.3
+	c-0.5,0.2-0.9,0.3-1.3,0.3c-0.5,0-0.8-0.4-0.8-1.1v-0.8c0-0.9-0.8-1-1.7-0.2c-2.1,1.6-3.9,2.3-6.1,2.3C30.2,46,26.3,38.2,26.3,31.3z
+	'
+                />
+                <path
+                  d='M62.1,1.7c2.2,0,3.6,1.8,3.6,3.7c0,2-1.6,3.6-3.6,3.6c-2.1,0-3.7-1.6-3.7-3.6C58.4,3.3,60,1.7,62.1,1.7z M56.2,44.2
+	L56.2,44.2c0-0.7,0.3-1,1-1.1c2.6-0.4,2.6-2.7,2.6-7.1V25.2c0-3.7,0.2-6.4-2.6-5.8c-0.8,0.2-1.3,0.1-1.6-0.4
+	c-0.2-0.5,0.1-1.1,0.9-1.5l3.4-1.5l3-1.3c0.5-0.2,0.9-0.3,1.3-0.3c0.5,0,0.8,0.4,0.8,1.1v20.5c0,4.3,0,6.7,2.6,7.1
+	c0.6,0.1,1,0.4,1,1v0.1c0,0.6-0.4,1.1-1,1.1H57.2C56.6,45.3,56.2,44.9,56.2,44.2'
+                />
+                <path
+                  d='M74.2,37.9V18.5c0-0.6-0.4-1.1-1.1-1.1h-2.2c-0.6,0-1.1-0.2-1.1-0.6c0-0.4,0.2-0.7,0.7-1c3.6-2.2,5.6-5.6,7.3-9.8
+	c0.2-0.6,0.6-0.8,0.9-0.8c0.3,0,0.6,0.4,0.6,1.1v7.6c0,0.6,0.4,1.1,1.1,1.1h4.2c0.6,0,1.1,0.4,1.1,1.1v0.4c0,0.6-0.4,1.1-1.1,1.1
+	h-4.2c-0.6,0-1.1,0.4-1.1,1.1v18.7c0,1.8,0,4.8,2.5,4.8c1.1,0,2.1-0.5,2.9-1.9c0.3-0.5,0.6-0.8,1.1-0.7c0.4,0.1,0.5,0.6,0.1,1.5
+	c-1.4,3.1-3.6,5-6.5,5C75.6,46,74.2,42.1,74.2,37.9'
+                />
+                <path
+                  d='M93.8,1.7c2.2,0,3.6,1.8,3.6,3.7c0,2-1.6,3.6-3.6,3.6c-2,0-3.7-1.6-3.7-3.6C90.1,3.3,91.8,1.7,93.8,1.7z M87.9,44.2
+	L87.9,44.2c0-0.7,0.3-1,1-1.1c2.6-0.4,2.6-2.7,2.6-7.1V25.2c0-3.7,0.2-6.4-2.6-5.8c-0.8,0.2-1.3,0.1-1.6-0.4
+	c-0.2-0.5,0.1-1.1,0.9-1.5l3.4-1.5l3-1.3c0.5-0.2,0.9-0.3,1.3-0.3s0.8,0.4,0.8,1.1v20.5c0,4.3,0,6.7,2.6,7.1c0.6,0.1,1,0.4,1,1v0.1
+	c0,0.6-0.4,1.1-1,1.1H88.9C88.3,45.3,87.9,44.9,87.9,44.2'
+                />
+                <path
+                  d='M122.6,27.7c-1.7-5.6-5.9-12.3-11.8-10.5c-5.7,1.8-4.7,10.3-3.4,14.5c1.7,5.5,6,12.8,12.1,11
+	C125.1,41.1,123.9,31.8,122.6,27.7 M115.1,14.2c7.8,0,13.2,6.4,13.2,15.6c0,9.2-5.4,16.2-13.2,16.2s-13.2-6.8-13.2-16.2
+	C101.9,20.5,107.4,14.2,115.1,14.2z'
+                />
+                <path
+                  d='M147.8,44.2L147.8,44.2c0-0.7,0.4-1,1-1.1c2.6-0.4,2.6-2.7,2.6-7.1v-10c0-2.4-0.1-7.6-4.3-7.6c-1.8,0-3.7,1-6.1,3.4
+	c-0.4,0.4-0.5,0.8-0.5,1.3v12.8c0,4.3,0,6.7,2.6,7.1c0.6,0.1,1,0.4,1,1v0.1c0,0.6-0.4,1-1,1h-10.4c-0.6,0-1-0.4-1-1v-0.1
+	c0-0.6,0.3-0.9,1-1c2.6-0.4,2.6-2.7,2.6-7.1V25.2c0-3.7,0.2-6.4-2.6-5.7c-0.8,0.2-1.4,0.1-1.6-0.5c-0.2-0.5,0.1-1.1,0.9-1.5l3.4-1.5
+	l3-1.3c0.5-0.2,0.9-0.3,1.3-0.3s0.8,0.4,0.8,1.1V18c0,0.9,0.6,1.2,1.3,0.5c1.9-2,4.8-4.2,7.7-4.2c5.9,0,7.2,6.1,7.2,11.3v10.5
+	c0,4.3,0,6.7,2.6,7.1c0.6,0.1,1,0.4,1,1v0.1c0,0.6-0.4,1-1,1h-10.5C148.2,45.3,147.8,44.9,147.8,44.2'
+                />
+                <path
+                  d='M163.4,45v-9.2c0-0.6,0.3-1,0.7-1c0.5,0,0.8,0.3,0.9,0.9c1.1,4.4,3.4,8.2,7.6,8.2c3.2,0,4.8-2.4,4.8-4.8
+	c0-3.4-3.2-5.2-7.1-6.8c-5-2-7-5.1-7-9.1c0-4.7,2.8-8.8,8-8.8c2.9,0,5.2,1.2,6.3,1.2c0.3,0,0.6-0.1,0.9-0.5c0.4-0.5,0.6-0.8,1.1-0.8
+	c0.3,0,0.6,0.4,0.6,1.1l-0.1,8.1c0,0.6-0.3,1.1-0.7,1.1c-0.5,0-0.8-0.3-0.9-0.9c-0.9-4.1-2.5-7.1-6.6-7.1c-3.2,0-4.7,2-4.7,4.4
+	s1.6,3.8,4.6,5.4c8.3,4.4,10.4,6.8,10.4,11c0,5.8-4,8.8-9.4,8.8c-3,0-5.9-1.3-6.8-1.3c-0.5,0-0.8,0.1-0.9,0.4
+	c-0.4,0.5-0.5,0.9-0.9,0.9C163.6,46,163.4,45.6,163.4,45z'
+                />
+              </svg>
+            </Link>
+          </div>
+        </div>
       </div>
     </header>
   );

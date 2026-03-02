@@ -16,7 +16,6 @@ type Props = {
 };
 
 const ContentHome = ({ input, tags }: Props) => {
-  console.log(input.about);
   return (
     <div className='content-home'>
       <section className='hero-slider'>
@@ -34,7 +33,7 @@ const ContentHome = ({ input, tags }: Props) => {
                     sizes='100vw'
                     style={{
                       width: "100vw",
-                      height: "calc(var(--vh) * 100 - var(--header-height))",
+                      height: "calc(var(--vh) * 100 - var(--header-h))",
                       objectFit: "contain",
                     }}
                   />

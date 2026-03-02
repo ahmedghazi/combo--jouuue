@@ -1,3 +1,5 @@
+import pageModulaire from '../schemaTypes/documents/pageModulaire'
+
 const remoteURL = 'https://xxx.gtsb.io'
 const localURL = 'http://localhost:8000'
 const previewURL = window.location.hostname === 'localhost' ? localURL + '' : remoteURL + ''
@@ -10,7 +12,16 @@ const hiddenDocTypes = (listItem: ListItemBuilder) => {
     return false
   }
 
-  return !['media.tag', 'home', 'infos', 'settings', 'product', 'publisher', 'tag'].includes(id)
+  return ![
+    'media.tag',
+    'home',
+    'infos',
+    'settings',
+    'pageModulaire',
+    'product',
+    'publisher',
+    'tag',
+  ].includes(id)
 }
 
 export const structure = (S) =>
@@ -39,7 +50,11 @@ export const structure = (S) =>
         .child(S.editor().title('Infos').schemaType('infos').documentId('infos')),
 
       S.divider(),
-
+      S.listItem()
+        .title('pageModulaire')
+        .schemaType('pageModulaire')
+        .child(S.documentTypeList('pageModulaire')),
+      S.divider(),
       /**
        * with seo preview
        */

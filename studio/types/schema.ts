@@ -88,6 +88,96 @@ export interface Home extends SanityDocument {
 }
 
 /**
+ * Page Modulaire
+ *
+ *
+ */
+export interface PageModulaire extends SanityDocument {
+  _type: "pageModulaire";
+
+  /**
+   * seo — `seo`
+   *
+   *
+   */
+  seo?: Seo;
+
+  /**
+   * Titre — `string`
+   *
+   * Le nom de la page
+   */
+  title?: string;
+
+  /**
+   * Soustitre — `string`
+   *
+   * Visible dans les listes page, dans la card (cartouche fond noir)
+   */
+  subTitle?: string;
+
+  /**
+   * Slug — `slug`
+   *
+   * URL basée sur le titre (sans espace ni caractère autre que a-z-0-9
+   */
+  slug?: { _type: "slug"; current: string };
+
+  /**
+   * Sous menu — `array`
+   *
+   * basé sur les slugs (ancre) des modules, générer le slug depuis le module, et mettre le slug dans le champs val
+   */
+  subMenu?: Array<SanityKeyed<KeyVal>>;
+
+  /**
+   * Tags — `array`
+   *
+   *
+   */
+  tags?: Array<SanityKeyedReference<Tag>>;
+
+  /**
+   * Image clef — `figure`
+   *
+   * Visible dans les listes page, dans la card (1400px)
+   */
+  imageCover?: Figure;
+
+  /**
+   * Extrait — `string`
+   *
+   *
+   */
+  excerpt?: string;
+
+  /**
+   * Modules — `array`
+   *
+   * Zone de contenu Modulaire (images, textes, embed)
+   */
+  modules?: Array<
+    | SanityKeyed<ImageUI>
+    | SanityKeyed<TextUI>
+    | SanityKeyed<TextImageUI>
+    | SanityKeyed<TextsUI>
+    | SanityKeyed<HeroUI>
+    | SanityKeyed<ImagesUI>
+    | SanityKeyed<LogosUI>
+    | SanityKeyed<ContactsUI>
+    | SanityKeyed<ListCardImageTextUI>
+    | SanityKeyed<ListLModulaireUI>
+    | SanityKeyed<ListPageUI>
+    | SanityKeyed<MarqueeUI>
+    | SanityKeyed<SplitImageTextUI>
+    | SanityKeyed<CallOutUI>
+    | SanityKeyed<HeroSplitScrollUI>
+    | SanityKeyed<HeroSplitUI>
+    | SanityKeyed<SliderCardImageTextUI>
+  >;
+}
+
+/**
  * Infos
  *
  *
@@ -136,7 +226,23 @@ export interface Infos extends SanityDocument {
    * Zone de contenu Modulaire (image, texte, embed)
    */
   modulesAbout?: Array<
-    SanityKeyed<ImageUI> | SanityKeyed<TextUI> | SanityKeyed<TextImageUI>
+    | SanityKeyed<ImageUI>
+    | SanityKeyed<TextUI>
+    | SanityKeyed<TextImageUI>
+    | SanityKeyed<TextsUI>
+    | SanityKeyed<HeroUI>
+    | SanityKeyed<ImagesUI>
+    | SanityKeyed<LogosUI>
+    | SanityKeyed<ContactsUI>
+    | SanityKeyed<ListCardImageTextUI>
+    | SanityKeyed<ListLModulaireUI>
+    | SanityKeyed<ListPageUI>
+    | SanityKeyed<MarqueeUI>
+    | SanityKeyed<SplitImageTextUI>
+    | SanityKeyed<CallOutUI>
+    | SanityKeyed<HeroSplitScrollUI>
+    | SanityKeyed<HeroSplitUI>
+    | SanityKeyed<SliderCardImageTextUI>
   >;
 
   /**
@@ -152,7 +258,23 @@ export interface Infos extends SanityDocument {
    * Zone de contenu Modulaire (image, texte, embed)
    */
   modulesContact?: Array<
-    SanityKeyed<ImageUI> | SanityKeyed<TextUI> | SanityKeyed<TextImageUI>
+    | SanityKeyed<ImageUI>
+    | SanityKeyed<TextUI>
+    | SanityKeyed<TextImageUI>
+    | SanityKeyed<TextsUI>
+    | SanityKeyed<HeroUI>
+    | SanityKeyed<ImagesUI>
+    | SanityKeyed<LogosUI>
+    | SanityKeyed<ContactsUI>
+    | SanityKeyed<ListCardImageTextUI>
+    | SanityKeyed<ListLModulaireUI>
+    | SanityKeyed<ListPageUI>
+    | SanityKeyed<MarqueeUI>
+    | SanityKeyed<SplitImageTextUI>
+    | SanityKeyed<CallOutUI>
+    | SanityKeyed<HeroSplitScrollUI>
+    | SanityKeyed<HeroSplitUI>
+    | SanityKeyed<SliderCardImageTextUI>
   >;
 }
 
@@ -188,7 +310,11 @@ export interface Settings extends SanityDocument {
    *
    *
    */
-  navPrimary?: Array<SanityKeyed<LinkInternal> | SanityKeyed<LinkExternal>>;
+  navPrimary?: Array<
+    | SanityKeyed<LinkInternal>
+    | SanityKeyed<LinkExternal>
+    | SanityKeyed<MenuItem>
+  >;
 
   /**
    * Naviguation Publishers — `array`
@@ -217,6 +343,13 @@ export interface Settings extends SanityDocument {
    *
    */
   footerTextCarteDeVisite?: BlockContent;
+
+  /**
+   * Page de mentions légales — `linkInternal`
+   *
+   *
+   */
+  legalsUrl?: LinkInternal;
 
   /**
    * Message 404 — `blockContent`
@@ -405,7 +538,23 @@ export interface Publisher extends SanityDocument {
    * Zone de contenu Modulaire (image, texte, embed)
    */
   modules?: Array<
-    SanityKeyed<ImageUI> | SanityKeyed<TextUI> | SanityKeyed<TextImageUI>
+    | SanityKeyed<ImageUI>
+    | SanityKeyed<TextUI>
+    | SanityKeyed<TextImageUI>
+    | SanityKeyed<TextsUI>
+    | SanityKeyed<HeroUI>
+    | SanityKeyed<ImagesUI>
+    | SanityKeyed<LogosUI>
+    | SanityKeyed<ContactsUI>
+    | SanityKeyed<ListCardImageTextUI>
+    | SanityKeyed<ListLModulaireUI>
+    | SanityKeyed<ListPageUI>
+    | SanityKeyed<MarqueeUI>
+    | SanityKeyed<SplitImageTextUI>
+    | SanityKeyed<CallOutUI>
+    | SanityKeyed<HeroSplitScrollUI>
+    | SanityKeyed<HeroSplitUI>
+    | SanityKeyed<SliderCardImageTextUI>
   >;
 }
 
@@ -444,7 +593,31 @@ export type LinkInternal = {
    *
    *
    */
-  link?: SanityReference<Home | Product | Publisher | Infos>;
+  link?: SanityReference<Home | Product | Publisher | Infos | PageModulaire>;
+
+  /**
+   * cta — `boolean`
+   *
+   * Look Bouton avec outline
+   */
+  cta?: boolean;
+};
+
+export type MenuItem = {
+  _type: "menuItem";
+  /**
+   * link — `linkInternal`
+   *
+   *
+   */
+  link?: LinkInternal;
+
+  /**
+   * Sub menu — `array`
+   *
+   *
+   */
+  subMenu?: Array<SanityKeyed<LinkInternal> | SanityKeyed<LinkExternal>>;
 };
 
 export type Seo = {
@@ -581,6 +754,44 @@ export type Variant = {
   color?: "Red" | "Blue" | "Green" | "Yellow" | "Black" | "White";
 };
 
+export type CardImageText = {
+  _type: "cardImageText";
+  /**
+   * title — `string`
+   *
+   *
+   */
+  title?: string;
+
+  /**
+   * Tag — `string`
+   *
+   *
+   */
+  tag?: string;
+
+  /**
+   * Tag Filter — `reference`
+   *
+   * Pour créer la nav filter sur la grille de Card Image Text
+   */
+  tagFilter?: SanityReference<Tag>;
+
+  /**
+   * text — `blockContent`
+   *
+   *
+   */
+  text?: BlockContent;
+
+  /**
+   * image — `figure`
+   *
+   *
+   */
+  image?: Figure;
+};
+
 export type ModulesGroup = {
   _type: "modulesGroup";
   /**
@@ -596,7 +807,23 @@ export type ModulesGroup = {
    *
    */
   items?: Array<
-    SanityKeyed<ImageUI> | SanityKeyed<TextUI> | SanityKeyed<TextImageUI>
+    | SanityKeyed<ImageUI>
+    | SanityKeyed<TextUI>
+    | SanityKeyed<TextImageUI>
+    | SanityKeyed<TextsUI>
+    | SanityKeyed<HeroUI>
+    | SanityKeyed<ImagesUI>
+    | SanityKeyed<LogosUI>
+    | SanityKeyed<ContactsUI>
+    | SanityKeyed<ListCardImageTextUI>
+    | SanityKeyed<ListLModulaireUI>
+    | SanityKeyed<ListPageUI>
+    | SanityKeyed<MarqueeUI>
+    | SanityKeyed<SplitImageTextUI>
+    | SanityKeyed<CallOutUI>
+    | SanityKeyed<HeroSplitScrollUI>
+    | SanityKeyed<HeroSplitUI>
+    | SanityKeyed<SliderCardImageTextUI>
   >;
 };
 
@@ -681,6 +908,63 @@ export type TextUI = {
   columns?: number;
 };
 
+export type TextsUI = {
+  _type: "textsUI";
+  /**
+   * look — `string`
+   *
+   *
+   */
+  look?: "default" | "offset";
+
+  /**
+   * title — `string`
+   *
+   * Module titre (visible uniquement dans l'admin)
+   */
+  title?: string;
+
+  /**
+   * items — `array`
+   *
+   *
+   */
+  items?: Array<SanityKeyed<BlockContent>>;
+
+  /**
+   * titleCentered — `boolean`
+   *
+   * Titre centré?
+   */
+  titleCentered?: boolean;
+
+  /**
+   * backgroundImage — `image`
+   *
+   * Image de fond
+   */
+  backgroundImage?: {
+    _type: "image";
+    asset: SanityReference<SanityImageAsset>;
+    crop?: SanityImageCrop;
+    hotspot?: SanityImageHotspot;
+  };
+
+  /**
+   * backgroundColor — `string`
+   *
+   * Couleur de fond
+   */
+  backgroundColor?: string;
+
+  /**
+   * foregroundColor — `string`
+   *
+   * Couleur de texte
+   */
+  foregroundColor?: string;
+};
+
 export type TextImageUI = {
   _type: "textImageUI";
   /**
@@ -724,4 +1008,403 @@ export type TextImageUI = {
   offset?: number;
 };
 
-export type Documents = Home | Infos | Settings | Tag | Product | Publisher;
+export type ImagesUI = {
+  _type: "imagesUI";
+  /**
+   * title — `string`
+   *
+   * Module title (displayed only in the admin)
+   */
+  title?: string;
+
+  /**
+   * items — `array`
+   *
+   *
+   */
+  items?: Array<SanityKeyed<Figure>>;
+};
+
+export type HeroUI = {
+  _type: "heroUI";
+  /**
+   * title — `string`
+   *
+   * Module title (displayed only in the admin)
+   */
+  title?: string;
+
+  /**
+   * image — `figure`
+   *
+   *
+   */
+  image?: Figure;
+};
+
+export type LogosUI = {
+  _type: "logosUI";
+  /**
+   * title — `string`
+   *
+   * Module title (displayed only in the admin)
+   */
+  title?: string;
+
+  /**
+   * items — `array`
+   *
+   *
+   */
+  items?: Array<SanityKeyed<Figure>>;
+
+  /**
+   * backgroundColor — `string`
+   *
+   * Couleur de fond
+   */
+  backgroundColor?: string;
+
+  /**
+   * foregroundColor — `string`
+   *
+   * Couleur de texte
+   */
+  foregroundColor?: string;
+};
+
+export type ContactsUI = {
+  _type: "contactsUI";
+  /**
+   * Titre — `string`
+   *
+   *
+   */
+  title?: string;
+
+  /**
+   * items — `array`
+   *
+   *
+   */
+  items?: Array<SanityKeyed<BlockContent>>;
+};
+
+export type ListCardImageTextUI = {
+  _type: "listCardImageTextUI";
+  /**
+   * Titre — `string`
+   *
+   *
+   */
+  title?: string;
+
+  /**
+   * Slug — `slug`
+   *
+   * Click sur generate, ancre servant au sous menu, pour que la page scroll vers cette section
+   */
+  slug?: { _type: "slug"; current: string };
+
+  /**
+   * gridSize — `number`
+   *
+   * Items par ligne, par défaut 3
+   */
+  gridSize?: number;
+
+  /**
+   * items — `array`
+   *
+   *
+   */
+  items?: Array<SanityKeyed<CardImageText>>;
+
+  /**
+   * navTags — `array`
+   *
+   *
+   */
+  navTags?: Array<SanityKeyedReference<Tag>>;
+};
+
+export type ListLModulaireUI = {
+  _type: "listLModulaireUI";
+  /**
+   * Titre — `string`
+   *
+   *
+   */
+  title?: string;
+
+  /**
+   * items — `array`
+   *
+   *
+   */
+  items?: Array<
+    | SanityKeyed<ImageUI>
+    | SanityKeyed<TextUI>
+    | SanityKeyed<TextImageUI>
+    | SanityKeyed<TextsUI>
+    | SanityKeyed<HeroUI>
+    | SanityKeyed<ImagesUI>
+    | SanityKeyed<LogosUI>
+    | SanityKeyed<ContactsUI>
+    | SanityKeyed<ListCardImageTextUI>
+    | SanityKeyed<ListLModulaireUI>
+    | SanityKeyed<ListPageUI>
+    | SanityKeyed<MarqueeUI>
+    | SanityKeyed<SplitImageTextUI>
+    | SanityKeyed<CallOutUI>
+    | SanityKeyed<HeroSplitScrollUI>
+    | SanityKeyed<HeroSplitUI>
+    | SanityKeyed<SliderCardImageTextUI>
+  >;
+};
+
+export type ListPageUI = {
+  _type: "listPageUI";
+  /**
+   * Titre — `string`
+   *
+   *
+   */
+  title?: string;
+
+  /**
+   * navTags — `array`
+   *
+   *
+   */
+  navTags?: Array<SanityKeyedReference<Tag>>;
+
+  /**
+   * gridSize — `number`
+   *
+   * Items par ligne, par défaut 3
+   */
+  gridSize?: number;
+
+  /**
+   * items — `array`
+   *
+   *
+   */
+  items?: Array<SanityKeyedReference<PageModulaire>>;
+};
+
+export type MarqueeUI = {
+  _type: "marqueeUI";
+  /**
+   * text — `string`
+   *
+   *
+   */
+  text?: string;
+
+  /**
+   * foregroundColor — `string`
+   *
+   * format hex : #123321
+   */
+  foregroundColor?: string;
+
+  /**
+   * backgroundColor — `string`
+   *
+   * format hex : #123321
+   */
+  backgroundColor?: string;
+};
+
+export type SplitImageTextUI = {
+  _type: "splitImageTextUI";
+  /**
+   * Image — `image`
+   *
+   *
+   */
+  image?: {
+    _type: "image";
+    asset: SanityReference<SanityImageAsset>;
+    crop?: SanityImageCrop;
+    hotspot?: SanityImageHotspot;
+  };
+
+  /**
+   * title — `string`
+   *
+   * Module title
+   */
+  title?: string;
+
+  /**
+   * Slug — `slug`
+   *
+   * Click sur generate, ancre servant au sous menu, pour que la page scroll vers cette section
+   */
+  slug?: { _type: "slug"; current: string };
+
+  /**
+   * Text — `blockContent`
+   *
+   *
+   */
+  text?: BlockContent;
+};
+
+export type SliderUI = {
+  _type: "sliderUI";
+  /**
+   * title — `string`
+   *
+   *
+   */
+  title?: string;
+
+  /**
+   * images — `array`
+   *
+   *
+   */
+  images?: Array<
+    SanityKeyed<{
+      _type: "image";
+      asset: SanityReference<SanityImageAsset>;
+      crop?: SanityImageCrop;
+      hotspot?: SanityImageHotspot;
+    }>
+  >;
+};
+
+export type CallOutUI = {
+  _type: "callOutUI";
+  /**
+   * title — `text`
+   *
+   * Module title
+   */
+  title?: string;
+
+  /**
+   * Slug — `slug`
+   *
+   * Click sur generate, ancre servant au sous menu, pour que la page scroll vers cette section
+   */
+  slug?: { _type: "slug"; current: string };
+
+  /**
+   * backgroundImage — `image`
+   *
+   * Image de fond
+   */
+  backgroundImage?: {
+    _type: "image";
+    asset: SanityReference<SanityImageAsset>;
+    crop?: SanityImageCrop;
+    hotspot?: SanityImageHotspot;
+  };
+
+  /**
+   * links — `array`
+   *
+   *
+   */
+  links?: Array<SanityKeyed<LinkExternal>>;
+};
+
+export type HeroSplitScrollUI = {
+  _type: "heroSplitScrollUI";
+  /**
+   * title — `string`
+   *
+   * Module title (displayed only in the admin)
+   */
+  title?: string;
+
+  /**
+   * itemsLeft — `array`
+   *
+   *
+   */
+  itemsLeft?: Array<SanityKeyed<Figure>>;
+
+  /**
+   * itemsRight — `array`
+   *
+   *
+   */
+  itemsRight?: Array<SanityKeyed<Figure>>;
+};
+
+export type HeroSplitUI = {
+  _type: "heroSplitUI";
+  /**
+   * title — `string`
+   *
+   * Module title (displayed only in the admin)
+   */
+  title?: string;
+
+  /**
+   * itemsLeft — `figure`
+   *
+   *
+   */
+  itemsLeft?: Figure;
+
+  /**
+   * itemsRight — `figure`
+   *
+   *
+   */
+  itemsRight?: Figure;
+};
+
+export type SliderCardImageTextUI = {
+  _type: "sliderCardImageTextUI";
+  /**
+   * Titre — `string`
+   *
+   *
+   */
+  title?: string;
+
+  /**
+   * Slug — `slug`
+   *
+   * Click sur generate, ancre servant au sous menu, pour que la page scroll vers cette section
+   */
+  slug?: { _type: "slug"; current: string };
+
+  /**
+   * gridSize — `number`
+   *
+   * Items par ligne, par défaut 3
+   */
+  gridSize?: number;
+
+  /**
+   * autoplay — `boolean`
+   *
+   *
+   */
+  autoplay?: boolean;
+
+  /**
+   * items — `array`
+   *
+   *
+   */
+  items?: Array<SanityKeyed<CardImageText>>;
+};
+
+export type Documents =
+  | Home
+  | PageModulaire
+  | Infos
+  | Settings
+  | Tag
+  | Product
+  | Publisher;

@@ -62,6 +62,7 @@ export default defineType({
         {
           type: 'linkExternal',
         },
+        {type: 'menuItem'},
       ],
       group: 'header',
     }),

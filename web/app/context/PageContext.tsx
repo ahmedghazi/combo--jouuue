@@ -35,6 +35,27 @@ export const PageContextProvider = (props: PageContextProps) => {
     };
   }, []);
 
+  // const _format = () => {
+  //   // const wh = window.innerHeight;
+
+  //   let vh = window.innerHeight * 0.01;
+  //   document.documentElement.style.setProperty("--vh", `${vh}px`);
+  //   // document.documentElement.style.setProperty("--app-height", wh + "px");
+
+  //   const header = document.querySelector("header");
+  //   let headerBounding = {} || { height: 50 };
+  //   if (header) {
+  //     headerBounding = header.getBoundingClientRect();
+
+  //     document.documentElement.style.setProperty(
+  //       "--header-h",
+  //       headerBounding.height + "px"
+  //     );
+  //   }
+
+  //   document.body.classList.remove("is-loading");
+  // };
+
   const _format = () => {
     // const wh = window.innerHeight;
 
@@ -43,13 +64,13 @@ export const PageContextProvider = (props: PageContextProps) => {
     // document.documentElement.style.setProperty("--app-height", wh + "px");
 
     const header = document.querySelector("header");
-    let headerBounding = {} || { height: 50 };
+    let headerBounding = { height: 50 };
     if (header) {
       headerBounding = header.getBoundingClientRect();
 
       document.documentElement.style.setProperty(
-        "--header-height",
-        headerBounding.height + "px"
+        "--header-h",
+        headerBounding.height + "px",
       );
     }
 
