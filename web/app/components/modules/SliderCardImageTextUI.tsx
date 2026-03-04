@@ -13,7 +13,7 @@ const ModuleSliderCardImageTextUI = ({ input }: Props) => {
   return (
     <section className='module module--slider-card-image-text-ui'>
       <div className='inner'>
-        <h2 className='headline'>{_localizeField(title)}</h2>
+        <h2 className='headline'>{title}</h2>
         <div className='slider-container -px-sm'>
           <Slider
             settingsOverride={{

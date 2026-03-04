@@ -66,8 +66,8 @@ const Modules = ({ modules }: ModulesList) => {
           return <ModuleMarqueeUI key={module._key} input={module} />;
         case "splitImageTextUI":
           return <ModuleSplitImageTextUI key={module._key} input={module} />;
-        case "sliderUI":
-          return <ModuleSliderUI key={module._key} input={module} />;
+        // case "sliderUI":
+        //   return <ModuleSliderUI key={module._key} input={module} />;
         case "callOutUI":
           return <ModuleCallOutUI key={module._key} input={module} />;
         case "heroSplitScrollUI":
