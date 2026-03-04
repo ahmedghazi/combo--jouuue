@@ -21,7 +21,7 @@ const ContentPublisher = ({ input }: Props) => {
       </section>
       <h1 className='titraille-sep mb-md'>{input.title}</h1>
       <div className='body'>
-        {input.modules && <Modules input={input.modules} />}
+        {input.modules && <Modules modules={input.modules} />}
       </div>
     </div>
   );

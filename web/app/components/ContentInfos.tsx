@@ -27,7 +27,7 @@ const ContentInfos = ({ input }: Props) => {
         </ul>
       </nav>
       <div className='body py-md'>
-        {tabBody && <Modules input={tabBody.items} />}
+        {tabBody && tabBody.items && <Modules modules={tabBody.items} />}
       </div>
     </div>
   );

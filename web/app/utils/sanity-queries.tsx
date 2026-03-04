@@ -3,6 +3,7 @@ import { client } from "./sanity-client";
 import {
   Home,
   Infos,
+  PageModulaire,
   Product,
   Publisher,
   Settings,
@@ -10,6 +11,7 @@ import {
 } from "../types/schema";
 import {
   moduleImage,
+  modules,
   moduleText,
   moduleTextImage,
   productCard,
@@ -112,10 +114,7 @@ export const infosQ = groq`*[_type == "infos"][0]{...,
   modules[]{
     ...,
     items[]{
-      ...,
-      ${moduleText},
-      ${moduleImage},
-      ${moduleTextImage}
+      ${modules}
     }
   }
 }`;
@@ -159,6 +158,11 @@ export async function getProduct(slug: string): Promise<Product> {
 
 /**
  * Publisher
+ *
+ *   // // ...,
+    // ${moduleText},
+    // ${moduleImage},
+    // ${moduleTextImage}
  */
 export const publisherQ = groq`*[_type == "publisher" && slug.current == $slug][0]{
   ...,
@@ -166,10 +170,7 @@ export const publisherQ = groq`*[_type == "publisher" && slug.current == $slug][
     ${seo}
   },
   modules[]{
-    ...,
-    ${moduleText},
-    ${moduleImage},
-    ${moduleTextImage}
+    ${modules}
   },
   "products": *[
     _type == "product"
@@ -207,4 +208,22 @@ export const tagQ = groq`*[_type == "tag" && slug.current == $slug][0]{
 }`;
 export async function getTag(slug: string): Promise<TagExtend> {
   return client.fetch(tagQ, { slug: slug });
+}
+
+/*****************************************************************************************************
+ * PAGE MODULAIRE
+ */
+export const PAGE_MODULAIRE_QUERY = groq`*[_type == "pageModulaire" && slug.current == $slug][0]{
+  ...,
+  seo{
+    ${seo}
+  },
+  modules[]{
+    ${modules}
+  },
+}`;
+export async function getPageModulaire(slug: string): Promise<PageModulaire> {
+  // revalidatePath(slug);
+  return client.fetch(PAGE_MODULAIRE_QUERY, { slug: slug });
+  // return cachedClient(PAGE_MODULAIRE_QUERY, { slug: slug });
 }

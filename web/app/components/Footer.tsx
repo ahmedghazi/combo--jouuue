@@ -35,7 +35,7 @@ const Footer = ({ settings }: Props) => {
   return (
     <footer>
       <nav className='nav-publishers mb-md'>
-        <ul className='flex'>
+        <ul className='flex justify-center gap-md md:text-lg'>
           {settings.navPublishers?.map((item, i) => (
             <li key={i}>
               <Link href={_linkResolver(item.link)}>{item.label}</Link>

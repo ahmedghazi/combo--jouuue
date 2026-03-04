@@ -12,7 +12,6 @@ export default [
   // {type: 'listStudioUI'},
   {type: 'listLModulaireUI'},
   {type: 'listPageUI'},
-
   {type: 'marqueeUI'},
   {type: 'splitImageTextUI'},
   // {type: 'sliderUI'},

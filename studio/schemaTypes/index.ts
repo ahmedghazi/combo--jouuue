@@ -5,6 +5,7 @@ import infos from './singletons/infos'
 import settings from './singletons/settings'
 import product from './shop/product'
 import publisher from './documents/publisher'
+import pageModulaire from './documents/pageModulaire'
 
 import blockContent from './objects/blockContent'
 import linkExternal from './objects/linkExternal'
@@ -13,6 +14,7 @@ import menuItem from './objects/menuItem'
 import seo from './objects/seo'
 import figure from './objects/figure'
 import keyVal from './objects/keyVal'
+import cardImageText from './objects/cardImageText'
 
 import variant from './shop/variant'
 
@@ -28,8 +30,8 @@ import marqueeUI from './objects/modules/marqueeUI'
 import splitImageTextUI from './objects/modules/splitImageTextUI'
 import sliderUI from './objects/modules/sliderUI'
 import calloutUI from './objects/modules/calloutUI'
-import listLieuUI from './objects/modules/listLieuUI'
-import listStudioUI from './objects/modules/listStudioUI'
+// import listLieuUI from './objects/modules/listLieuUI'
+// import listStudioUI from './objects/modules/listStudioUI'
 import listLModulaireUI from './objects/modules/listLModulaireUI'
 import heroSplitScrollUI from './objects/modules/heroSplitScrollUI'
 import heroSplitUI from './objects/modules/heroSplitUI'
@@ -37,8 +39,7 @@ import listPageUI from './objects/modules/listPageUI'
 import sliderCardImageTextUI from './objects/modules/sliderCardImageTextUI'
 import imagesUI from './objects/modules/imagesUI'
 import logosUI from './objects/modules/logosUI'
-import cardImageText from './objects/cardImageText'
-import pageModulaire from './documents/pageModulaire'
+
 export const schemaTypes = [
   home,
   pageModulaire,

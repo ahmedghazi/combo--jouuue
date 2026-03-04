@@ -86,7 +86,7 @@ const ContentProduct = ({ input }: Props) => {
       </div>
       <div className='body'>
         <div className='grid grid-cols-1 md:grid-cols-2 gap-md'>
-          <div className='md:grid grid-cols-6'>
+          <div className='md:grid grid-cols-6 items-baseline'>
             <div className='col-span-2 label'>Description</div>
             <div className='col-span-4'>
               <div className='text '>
@@ -102,7 +102,7 @@ const ContentProduct = ({ input }: Props) => {
 
           <div className='col-infos'>
             <div className='infos'>
-              <div className='flex flex-col-reverse md:flex-row justify-between mb-lg'>
+              <div className='flex flex-col-reverse md:flex-row justify-between mb-lg items-baseline'>
                 <div className='label'>Informations</div>
                 <div className='w-4/6 '>
                   <div className='text information text-md'>
@@ -110,7 +110,7 @@ const ContentProduct = ({ input }: Props) => {
                   </div>
                 </div>
               </div>
-              <div className='flex flex-col-reverse md:flex-row justify-between'>
+              <div className='flex flex-col-reverse md:flex-row justify-between items-baseline'>
                 <div className='label'>Contributeurs</div>
                 <div className='w-4/6 '>
                   <div className='text'>

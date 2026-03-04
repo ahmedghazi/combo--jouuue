@@ -12,17 +12,24 @@ const ModuleTextUI = ({ input }: Props) => {
 
   return (
     <section className='module module--text mb-lg'>
-      <div className='row no-gutter-'>
-        <div
-          className={clsx(`col-md-${width} col-md-offset-${offset} col-xs-12`)}>
+      <div className='inner'>
+        <div className='row no-gutter-'>
           <div
-            className='text-wrapper'
-            style={{
-              columnCount: columns ? columns : 1,
-            }}>
-            {text && (
-              <PortableText value={text} components={portableTextComponents} />
-            )}
+            className={clsx(
+              `col-md-${width} col-md-offset-${offset} col-xs-12`,
+            )}>
+            <div
+              className='text-wrapper'
+              style={{
+                columnCount: columns ? columns : 1,
+              }}>
+              {text && (
+                <PortableText
+                  value={text}
+                  components={portableTextComponents}
+                />
+              )}
+            </div>
           </div>
         </div>
       </div>
