@@ -3,7 +3,7 @@ import website from "@/app/config/website";
 import { ProductExtend } from "@/app/types/extend";
 // import { Product } from "@/app/types/schema";
 import { getClient } from "@/app/utils/sanity.client";
-import { getProduct, productQ } from "@/app/utils/sanity-queries";
+import { getProduct, PRODUCT_QUIERY } from "@/app/utils/sanity-queries";
 import { Metadata } from "next";
 import { draftMode } from "next/headers";
 import React from "react";
@@ -37,7 +37,7 @@ const Page: ({ params }: PageProps) => Promise<JSX.Element> = async ({
   let data: ProductExtend;
   if (preview) {
     data = await getClient({ token: process.env.SANITY_API_READ_TOKEN }).fetch(
-      productQ,
+      PRODUCT_QUIERY,
       params,
     );
   } else {

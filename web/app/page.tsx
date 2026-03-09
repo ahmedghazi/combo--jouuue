@@ -4,7 +4,7 @@ import { Metadata } from "next";
 import website from "./config/website";
 import ContentHome from "./components/ContentHome";
 import { getClient } from "./utils/sanity-client";
-import { getHome, getTags, homeQ } from "./utils/sanity-queries";
+import { getHome, getTags, HOME_QUIERY } from "./utils/sanity-queries";
 import { Home } from "./types/schema";
 
 export const revalidate = 3600; // revalidate every hour
@@ -36,8 +36,8 @@ const Page: ({ params }: PageProps) => Promise<JSX.Element> = async ({
   let data: Home;
   if (preview) {
     data = await getClient({ token: process.env.SANITY_API_READ_TOKEN }).fetch(
-      homeQ,
-      params
+      HOME_QUIERY,
+      params,
     );
   } else {
     data = (await getHome()) as Home;

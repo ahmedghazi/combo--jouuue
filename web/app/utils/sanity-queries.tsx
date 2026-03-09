@@ -80,7 +80,7 @@ export async function getSettings(): Promise<Settings> {
 /**
  * HOME
  */
-export const homeQ = groq`*[_type == "home"][0]{
+export const HOME_QUIERY = groq`*[_type == "home"][0]{
   ...,
   seo{
     ${seo}
@@ -94,18 +94,20 @@ export const homeQ = groq`*[_type == "home"][0]{
   products[]->{
     ${productCard}
   },
-
+  modules[]{
+    ${modules}
+  },
 }`;
 
 export async function getHome(): Promise<Home> {
-  return client.fetch(homeQ, {});
+  return client.fetch(HOME_QUIERY, {});
 }
 
 /**
  * Infos
  */
 
-export const infosQ = groq`*[_type == "infos"][0]{...,
+export const INFOS_QUIERY = groq`*[_type == "infos"][0]{...,
   ...,
   seo{
     ${seo}
@@ -119,13 +121,13 @@ export const infosQ = groq`*[_type == "infos"][0]{...,
   }
 }`;
 export async function getInfos(): Promise<Infos> {
-  return client.fetch(infosQ, {});
+  return client.fetch(INFOS_QUIERY, {});
 }
 
 /**
  * Product
  */
-export const productQ = groq`*[_type == "product" && slug.current == $slug][0]{
+export const PRODUCT_QUIERY = groq`*[_type == "product" && slug.current == $slug][0]{
   ...,
   seo{
     ${seo}
@@ -153,7 +155,7 @@ export const productQ = groq`*[_type == "product" && slug.current == $slug][0]{
 }`;
 
 export async function getProduct(slug: string): Promise<Product> {
-  return client.fetch(productQ, { slug: slug });
+  return client.fetch(PRODUCT_QUIERY, { slug: slug });
 }
 
 /**
@@ -164,7 +166,7 @@ export async function getProduct(slug: string): Promise<Product> {
     // ${moduleImage},
     // ${moduleTextImage}
  */
-export const publisherQ = groq`*[_type == "publisher" && slug.current == $slug][0]{
+export const PUBLISHER_QUIERY = groq`*[_type == "publisher" && slug.current == $slug][0]{
   ...,
   seo{
     ${seo}
@@ -181,23 +183,23 @@ export const publisherQ = groq`*[_type == "publisher" && slug.current == $slug][
 }`;
 
 export async function getPublisher(slug: string): Promise<PublisherExtend> {
-  return client.fetch(publisherQ, { slug: slug });
+  return client.fetch(PUBLISHER_QUIERY, { slug: slug });
 }
 
 /**
  * TAGS
  */
-export const tagsQ = groq`*[_type == "tag" ]{
+export const TAGS_QUIERY = groq`*[_type == "tag" ]{
   ...
 }`;
 export async function getTags(): Promise<Tag[]> {
-  return client.fetch(tagsQ, {});
+  return client.fetch(TAGS_QUIERY, {});
 }
 
 /**
  * TAG
  */
-export const tagQ = groq`*[_type == "tag" && slug.current == $slug][0]{
+export const TAG_QUIERY = groq`*[_type == "tag" && slug.current == $slug][0]{
   ...,
   "products": *[
     _type == "product"
@@ -207,7 +209,7 @@ export const tagQ = groq`*[_type == "tag" && slug.current == $slug][0]{
   }
 }`;
 export async function getTag(slug: string): Promise<TagExtend> {
-  return client.fetch(tagQ, { slug: slug });
+  return client.fetch(TAG_QUIERY, { slug: slug });
 }
 
 /*****************************************************************************************************

@@ -85,6 +85,31 @@ export interface Home extends SanityDocument {
    *
    */
   products?: Array<SanityKeyedReference<Product>>;
+
+  /**
+   * Modules — `array`
+   *
+   * Zone de contenu Modulaire (images, textes, embed)
+   */
+  modules?: Array<
+    | SanityKeyed<ImageUI>
+    | SanityKeyed<TextUI>
+    | SanityKeyed<TextImageUI>
+    | SanityKeyed<TextsUI>
+    | SanityKeyed<HeroUI>
+    | SanityKeyed<ImagesUI>
+    | SanityKeyed<LogosUI>
+    | SanityKeyed<ContactsUI>
+    | SanityKeyed<ListCardImageTextUI>
+    | SanityKeyed<ListLModulaireUI>
+    | SanityKeyed<ListPageUI>
+    | SanityKeyed<MarqueeUI>
+    | SanityKeyed<SplitImageTextUI>
+    | SanityKeyed<CallOutUI>
+    | SanityKeyed<HeroSplitScrollUI>
+    | SanityKeyed<HeroSplitUI>
+    | SanityKeyed<SliderCardImageTextUI>
+  >;
 }
 
 /**

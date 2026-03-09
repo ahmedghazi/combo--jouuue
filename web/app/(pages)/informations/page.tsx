@@ -1,6 +1,6 @@
 import React from "react";
 import { Metadata } from "next";
-import { getInfos, infosQ } from "@/app/utils/sanity-queries";
+import { getInfos, INFOS_QUIERY } from "@/app/utils/sanity-queries";
 import website from "@/app/config/website";
 import { draftMode } from "next/headers";
 import { getClient } from "@/app/utils/sanity.client";
@@ -36,7 +36,7 @@ const Page: ({ params }: PageProps) => Promise<JSX.Element> = async ({
   let data: Infos;
   if (preview) {
     data = await getClient({ token: process.env.SANITY_API_READ_TOKEN }).fetch(
-      infosQ,
+      INFOS_QUIERY,
       params,
     );
   } else {

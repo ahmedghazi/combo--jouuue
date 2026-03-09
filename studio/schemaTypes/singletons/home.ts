@@ -65,5 +65,13 @@ export default defineType({
       of: [{type: 'reference', to: [{type: 'product'}]}],
       group: 'editorial',
     }),
+    defineField({
+      name: 'modules',
+      title: 'Modules',
+      description: 'Zone de contenu Modulaire (images, textes, embed)',
+      type: 'array',
+      of: modulesList,
+      group: 'editorial',
+    }),
   ],
 })

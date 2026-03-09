@@ -1,7 +1,7 @@
 import React from "react";
 import ContentPublisher from "@/app/components/ContentPublisher";
 import { Metadata } from "next";
-import { getPublisher, publisherQ } from "@/app/utils/sanity-queries";
+import { getPublisher, PUBLISHER_QUIERY } from "@/app/utils/sanity-queries";
 import website from "@/app/config/website";
 import { draftMode } from "next/headers";
 import { getClient } from "@/app/utils/sanity.client";
@@ -36,7 +36,7 @@ const Page: ({ params }: PageProps) => Promise<JSX.Element> = async ({
   let data: PublisherExtend;
   if (preview) {
     data = await getClient({ token: process.env.SANITY_API_READ_TOKEN }).fetch(
-      publisherQ,
+      PUBLISHER_QUIERY,
       params,
     );
   } else {
