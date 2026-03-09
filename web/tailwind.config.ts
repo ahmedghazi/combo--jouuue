@@ -24,6 +24,7 @@ const config: Config = {
       md: "var(--space-md)",
       lg: "var(--space-lg)",
       xl: "var(--space-xl)",
+      "50": "var(--space-50)",
       gutter: "var(--gutter)",
       "header-height": "var(--header-h)",
     },

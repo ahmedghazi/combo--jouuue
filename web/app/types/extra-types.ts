@@ -43,25 +43,5 @@ export interface ModulesList {
     | SanityKeyed<HeroSplitScrollUI>
     | SanityKeyed<HeroSplitUI>
     | SanityKeyed<SliderCardImageTextUI>
-    // | SanityKeyed<TextUI>
-    // | SanityKeyed<TextsUI>
-    // | SanityKeyed<TextImageUI>
-    // | SanityKeyed<HeroUI>
-    // | SanityKeyed<ImagesUI>
-    // | SanityKeyed<LogosUI>
-    // | SanityKeyed<ContactsUI>
-    // | SanityKeyed<ListCardImageTextUI>
-    // | SanityKeyed<ListLieuUI>
-    // | SanityKeyed<ListStudioUI>
-    // | SanityKeyed<ListLModulaireUI>
-    // | SanityKeyed<ListPageUI>
-    // | SanityKeyed<ImageUI>
-    // | SanityKeyed<MarqueeUI>
-    // | SanityKeyed<SplitImageTextUI>
-    // | SanityKeyed<SliderUI>
-    // | SanityKeyed<CallOutUI>
-    // | SanityKeyed<HeroSplitScrollUI>
-    // | SanityKeyed<HeroSplitUI>
-    // | SanityKeyed<SliderCardImageTextUI>
   >;
 }

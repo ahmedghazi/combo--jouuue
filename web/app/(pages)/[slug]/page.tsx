@@ -1,6 +1,6 @@
 import ContentModulaire from "@/app/components/ContentModulaire";
 import website from "@/app/config/website";
-import { getClient } from "@/app/utils/sanity-client";
+import { getClient } from "@/app/utils/sanity.client";
 
 import { PageModulaire } from "@/app/types/schema";
 import {

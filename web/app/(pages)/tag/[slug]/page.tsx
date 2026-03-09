@@ -4,7 +4,7 @@ import { Metadata } from "next";
 import { getPublisher, getTag, publisherQ } from "@/app/utils/sanity-queries";
 import website from "@/app/config/website";
 import { draftMode } from "next/headers";
-import { getClient } from "@/app/utils/sanity-client";
+import { getClient } from "@/app/utils/sanity.client";
 import { PublisherExtend, TagExtend } from "@/app/types/extend";
 import ContentTag from "@/app/components/ContentTag";
 
@@ -38,7 +38,7 @@ const Page: ({ params }: PageProps) => Promise<JSX.Element> = async ({
   if (preview) {
     data = await getClient({ token: process.env.SANITY_API_READ_TOKEN }).fetch(
       publisherQ,
-      params
+      params,
     );
   } else {
     data = await getTag(params.slug);

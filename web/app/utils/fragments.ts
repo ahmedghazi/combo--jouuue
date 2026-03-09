@@ -317,13 +317,12 @@ export const listCardImageTextUI = `
 		items[] {
 			...,
 			image{
-				...,
-				asset->
+				${figure}
 			},
 			text{
 				${blockContent}
 			},
-      tagFilter->{
+      tagsFilter[]->{
         title,
         slug
       }

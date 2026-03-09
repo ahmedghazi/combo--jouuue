@@ -23,7 +23,7 @@ export default {
         source: (doc, context) => {
           console.log({doc})
           console.log({context})
-          return context.parent ? context.parent.title.fr : 'title'
+          return context.parent ? context.parent?.title || 'title' : 'title'
         },
         maxLength: 96,
       },

@@ -10,7 +10,7 @@ header {
   transition:
     transform 0.3s var(--cubic),
     opacity 0.3s var(--cubic);
-
+  // @include mixins.debugFiletY(50%);
   .marquee-wrapper {
     height: calc(var(--text-sm) * 2);
   }

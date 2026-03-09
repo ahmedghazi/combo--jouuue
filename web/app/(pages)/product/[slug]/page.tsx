@@ -2,7 +2,7 @@ import ContentProduct from "@/app/components/ContentProduct";
 import website from "@/app/config/website";
 import { ProductExtend } from "@/app/types/extend";
 // import { Product } from "@/app/types/schema";
-import { getClient } from "@/app/utils/sanity-client";
+import { getClient } from "@/app/utils/sanity.client";
 import { getProduct, productQ } from "@/app/utils/sanity-queries";
 import { Metadata } from "next";
 import { draftMode } from "next/headers";
@@ -38,7 +38,7 @@ const Page: ({ params }: PageProps) => Promise<JSX.Element> = async ({
   if (preview) {
     data = await getClient({ token: process.env.SANITY_API_READ_TOKEN }).fetch(
       productQ,
-      params
+      params,
     );
   } else {
     data = (await getProduct(params.slug)) as ProductExtend;

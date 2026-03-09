@@ -4,7 +4,7 @@ import { Metadata } from "next";
 import { getPublisher, publisherQ } from "@/app/utils/sanity-queries";
 import website from "@/app/config/website";
 import { draftMode } from "next/headers";
-import { getClient } from "@/app/utils/sanity-client";
+import { getClient } from "@/app/utils/sanity.client";
 import { PublisherExtend } from "@/app/types/extend";
 
 export const revalidate = 3600; // revalidate every hour
@@ -37,7 +37,7 @@ const Page: ({ params }: PageProps) => Promise<JSX.Element> = async ({
   if (preview) {
     data = await getClient({ token: process.env.SANITY_API_READ_TOKEN }).fetch(
       publisherQ,
-      params
+      params,
     );
   } else {
     data = await getPublisher(params.slug);

@@ -780,11 +780,11 @@ export type CardImageText = {
   tag?: string;
 
   /**
-   * Tag Filter — `reference`
+   * Tag Filter — `array`
    *
    * Pour créer la nav filter sur la grille de Card Image Text
    */
-  tagFilter?: SanityReference<Tag>;
+  tagsFilter?: Array<SanityKeyedReference<Tag>>;
 
   /**
    * text — `blockContent`

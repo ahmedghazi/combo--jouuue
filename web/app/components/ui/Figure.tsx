@@ -36,7 +36,8 @@ const Figure = ({ asset, width = 1000, alt = website.title }: Props) => {
             // objectFit: "cover",
           }}
           blurDataURL={asset?.metadata?.lqip}
-          placeholder='blur'
+          placeholder={asset?.metadata?.lqip}
+          // placeholder='blur'
           // placeholder={asset?.metadata?.lqip}
           // onError={() => {
           //   setImgSrc(asset.url);

@@ -15,10 +15,11 @@ type Props = {
 
 const Card = ({ image, title, tag, excerpt, text }: Props) => {
   // console.log(title);
-  // console.log(text);
+  console.log(image);
   return (
     <article className='card'>
       <div className='inner'>
+        {/* <pre>{JSON.stringify(image, null, 2)}</pre> */}
         {image && <FigureComponent asset={image.image} />}
         <div className='content'>
           <div className='header'>

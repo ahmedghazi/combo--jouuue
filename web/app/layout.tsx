@@ -13,6 +13,8 @@ import { ShopWrapper } from "./components/shop/ShopContext";
 import Script from "next/script";
 import Cursor from "./components/ui/Cursor";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import { draftMode } from "next/headers";
+import { VisualEditing } from "next-sanity";
 
 export const metadata = {
   metadataBase: new URL(website.url),
@@ -50,6 +52,7 @@ export default async function RootLayout({
               <main>{children}</main>
               <Footer settings={settings} />
               <Logo rotateOnScroll={true} />
+              {(await draftMode()).isEnabled && <VisualEditing />}
 
               <Cursor color='var(--color-blue)' size={20} />
             </PageContextProvider>

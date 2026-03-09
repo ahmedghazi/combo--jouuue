@@ -3,7 +3,7 @@ import { Metadata } from "next";
 import { getInfos, infosQ } from "@/app/utils/sanity-queries";
 import website from "@/app/config/website";
 import { draftMode } from "next/headers";
-import { getClient } from "@/app/utils/sanity-client";
+import { getClient } from "@/app/utils/sanity.client";
 import { Infos } from "@/app/types/schema";
 import ContentInfos from "@/app/components/ContentInfos";
 
@@ -37,7 +37,7 @@ const Page: ({ params }: PageProps) => Promise<JSX.Element> = async ({
   if (preview) {
     data = await getClient({ token: process.env.SANITY_API_READ_TOKEN }).fetch(
       infosQ,
-      params
+      params,
     );
   } else {
     data = await getInfos();
