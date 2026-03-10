@@ -592,6 +592,43 @@ export interface Publisher extends SanityDocument {
   >;
 }
 
+/**
+ * Catalog
+ *
+ *
+ */
+export interface Catalog extends SanityDocument {
+  _type: "catalog";
+
+  /**
+   * seo — `seo`
+   *
+   *
+   */
+  seo?: Seo;
+
+  /**
+   * Title — `string`
+   *
+   *
+   */
+  title?: string;
+
+  /**
+   * Slug — `slug`
+   *
+   * ne pas éditer
+   */
+  slug?: { _type: "slug"; current: string };
+
+  /**
+   * products — `array`
+   *
+   *
+   */
+  products?: Array<SanityKeyedReference<Product>>;
+}
+
 export type BlockContent = Array<
   SanityKeyed<SanityBlock> | SanityKeyed<Figure>
 >;
@@ -627,7 +664,9 @@ export type LinkInternal = {
    *
    *
    */
-  link?: SanityReference<Home | Product | Publisher | Infos | PageModulaire>;
+  link?: SanityReference<
+    Home | Product | Publisher | Infos | PageModulaire | Catalog
+  >;
 
   /**
    * cta — `boolean`
@@ -1441,4 +1480,5 @@ export type Documents =
   | Settings
   | Tag
   | Product
-  | Publisher;
+  | Publisher
+  | Catalog;

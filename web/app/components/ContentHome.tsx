@@ -20,7 +20,7 @@ const ContentHome = ({ input, tags }: Props) => {
   const { slider, about, products, modules } = input;
   return (
     <div className='content-home'>
-      {slider && slider.length > 0 && (
+      {/* {slider && slider.length > 0 && (
         <section className='hero-slider'>
           <Slider settingsOverride={{}}>
             {input.slider &&
@@ -75,7 +75,6 @@ const ContentHome = ({ input, tags }: Props) => {
       )}
       {products && products.length > 0 && (
         <section className='products p-md '>
-          {/* <pre>{JSON.stringify(tags, null, 2)}</pre> */}
           {tags && tags.length > 0 && (
             <nav className='nav-tags mb-md'>
               <ul className=''>
@@ -93,7 +92,7 @@ const ContentHome = ({ input, tags }: Props) => {
             ))}
           </div>
         </section>
-      )}
+      )} */}
 
       {modules && <Modules modules={modules} />}
     </div>

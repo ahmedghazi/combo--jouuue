@@ -1,6 +1,7 @@
 import { groq } from "next-sanity";
 import { client } from "./sanity-client";
 import {
+  Catalog,
   Home,
   Infos,
   PageModulaire,
@@ -122,6 +123,19 @@ export const INFOS_QUIERY = groq`*[_type == "infos"][0]{...,
 }`;
 export async function getInfos(): Promise<Infos> {
   return client.fetch(INFOS_QUIERY, {});
+}
+
+export const CATALOG_QUIERY = groq`*[_type == "catalog"][0]{...,
+  ...,
+  seo{
+    ${seo}
+  },
+  products[]->{
+    ${productCard}
+  },
+}`;
+export async function getCatalog(): Promise<Catalog> {
+  return client.fetch(CATALOG_QUIERY, {});
 }
 
 /**

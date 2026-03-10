@@ -11,6 +11,7 @@ import { draftMode } from "next/headers";
 import { getClient } from "@/app/utils/sanity.client";
 import { PublisherExtend, TagExtend } from "@/app/types/extend";
 import ContentTag from "@/app/components/ContentTag";
+import { notFound } from "next/navigation";
 
 export const revalidate = 3600; // revalidate every hour
 export const dynamic = "force-dynamic";
@@ -48,7 +49,7 @@ const Page: ({ params }: PageProps) => Promise<JSX.Element> = async ({
     data = await getTag(params.slug);
   }
 
-  if (!data) return <div>please edit page {params.slug}</div>;
+  if (!data) return notFound();
   return (
     <div className='template template--tag' data-template='tag'>
       <ContentTag input={data} />

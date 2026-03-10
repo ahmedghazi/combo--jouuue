@@ -7,6 +7,7 @@ import { getProduct, PRODUCT_QUIERY } from "@/app/utils/sanity-queries";
 import { Metadata } from "next";
 import { draftMode } from "next/headers";
 import React from "react";
+import { notFound } from "next/navigation";
 
 export const revalidate = 10; // revalidate every hour
 export const dynamic = "force-dynamic";
@@ -44,7 +45,7 @@ const Page: ({ params }: PageProps) => Promise<JSX.Element> = async ({
     data = (await getProduct(params.slug)) as ProductExtend;
   }
 
-  if (!data) return <div>please edit page</div>;
+  if (!data) return notFound();
   return (
     <div className='template template--product' data-template='product'>
       {data && <ContentProduct input={data} />}

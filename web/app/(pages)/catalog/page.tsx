@@ -1,12 +1,19 @@
 import React from "react";
-import ContentPublisher from "@/app/components/ContentPublisher";
 import { Metadata } from "next";
-import { getPublisher, PUBLISHER_QUIERY } from "@/app/utils/sanity-queries";
+import {
+  CATALOG_QUIERY,
+  getCatalog,
+  getInfos,
+  getTags,
+  INFOS_QUIERY,
+} from "@/app/utils/sanity-queries";
 import website from "@/app/config/website";
 import { draftMode } from "next/headers";
 import { getClient } from "@/app/utils/sanity.client";
-import { PublisherExtend } from "@/app/types/extend";
+import { Catalog, Infos } from "@/app/types/schema";
+import ContentInfos from "@/app/components/ContentInfos";
 import { notFound } from "next/navigation";
+import ContentCatalog from "@/app/components/ContentCatalog";
 
 export const revalidate = 3600; // revalidate every hour
 export const dynamic = "force-dynamic";
@@ -14,7 +21,7 @@ export const dynamic = "force-dynamic";
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
-  const data = await getPublisher(params.slug);
+  const data = await getCatalog();
   return {
     title: `${data?.seo?.metaTitle || data?.title || ""}`,
     description: data?.seo?.metaDescription,
@@ -34,21 +41,21 @@ const Page: ({ params }: PageProps) => Promise<JSX.Element> = async ({
   params,
 }) => {
   const { isEnabled: preview } = draftMode();
-  let data: PublisherExtend;
+  let data: Catalog;
   if (preview) {
     data = await getClient({ token: process.env.SANITY_API_READ_TOKEN }).fetch(
-      PUBLISHER_QUIERY,
+      CATALOG_QUIERY,
       params,
     );
   } else {
-    data = await getPublisher(params.slug);
+    data = await getCatalog();
   }
+  const tags = await getTags();
 
   if (!data) return notFound();
   return (
-    <div className='template template--publisher' data-template='publisher'>
-      {/* <pre>{JSON.stringify(data, null)}</pre> */}
-      <ContentPublisher input={data} />
+    <div className='template template--catalog' data-template='catalog'>
+      <ContentCatalog input={data} tags={tags} />
     </div>
   );
 };

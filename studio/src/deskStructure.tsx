@@ -18,6 +18,7 @@ const hiddenDocTypes = (listItem: ListItemBuilder) => {
     'infos',
     'settings',
     'pageModulaire',
+    'catalog',
     'product',
     'publisher',
     'tag',
@@ -64,6 +65,11 @@ export const structure = (S) =>
         .schemaType('publisher')
         .child(S.documentTypeList('publisher')),
       S.divider(),
+
+      S.listItem()
+        .title('Catalog')
+        .schemaType('catalog')
+        .child(S.editor().title('Catalog').schemaType('catalog').documentId('catalog')),
 
       S.listItem().title('Product').schemaType('product').child(S.documentTypeList('product')),
       S.listItem().title('Tags').schemaType('tag').child(S.documentTypeList('tag')),

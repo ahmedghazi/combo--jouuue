@@ -11,6 +11,7 @@ import {
 import { Metadata, NextPage } from "next";
 import { draftMode } from "next/headers";
 import React from "react";
+import { notFound } from "next/navigation";
 
 export const revalidate = 10; // revalidate every hour
 export const dynamic = "force-dynamic";
@@ -48,7 +49,7 @@ const Page: NextPage<PageProps> = async ({ params }) => {
     data = (await getPageModulaire(slug)) as PageModulaire;
   }
 
-  if (!data) return <div>please edit page</div>;
+  if (!data) return notFound();
   return (
     <div
       className='template template--page-modulaire'

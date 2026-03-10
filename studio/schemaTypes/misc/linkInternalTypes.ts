@@ -4,4 +4,5 @@ export default [
   {type: 'publisher'},
   {type: 'infos'},
   {type: 'pageModulaire'},
+  {type: 'catalog'},
 ]

@@ -6,6 +6,7 @@ import settings from './singletons/settings'
 import product from './shop/product'
 import publisher from './documents/publisher'
 import pageModulaire from './documents/pageModulaire'
+import catalog from './singletons/catalog'
 
 import blockContent from './objects/blockContent'
 import linkExternal from './objects/linkExternal'
@@ -48,6 +49,7 @@ export const schemaTypes = [
   tag,
   product,
   publisher,
+  catalog,
 
   blockContent,
   linkExternal,
