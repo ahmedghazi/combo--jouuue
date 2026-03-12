@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(request: NextRequest) {
   const secret = request.nextUrl.searchParams.get("secret");
+  console.log("REVALIDATE_CACHE");
   console.log("secret", secret);
   //
   // Vérifie le token secret
