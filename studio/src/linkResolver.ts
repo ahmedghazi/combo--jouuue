@@ -6,7 +6,7 @@ export const linkResolver: PresentationPluginOptions['resolve'] = {
     home: defineLocations({
       // Select one or more fields
       select: {
-        title: 'title.fr',
+        title: 'title',
         slug: 'slug.current',
       },
       // Those fields are available in the resolve callback function
@@ -14,11 +14,33 @@ export const linkResolver: PresentationPluginOptions['resolve'] = {
         locations: [{title: doc?.title || 'Home', href: `/`}],
       }),
     }),
+    infos: defineLocations({
+      // Select one or more fields
+      select: {
+        title: 'title',
+        slug: 'slug.current',
+      },
+      // Those fields are available in the resolve callback function
+      resolve: (doc) => ({
+        locations: [{title: doc?.title || 'Home', href: `/${doc?.slug}`}],
+      }),
+    }),
+    catalog: defineLocations({
+      // Select one or more fields
+      select: {
+        title: 'title',
+        slug: 'slug.current',
+      },
+      // Those fields are available in the resolve callback function
+      resolve: (doc) => ({
+        locations: [{title: doc?.title || 'Home', href: `/${doc?.slug}`}],
+      }),
+    }),
 
     pageModulaire: defineLocations({
       // Select one or more fields
       select: {
-        title: 'title.fr',
+        title: 'title',
         slug: 'slug.current',
       },
       // Those fields are available in the resolve callback function
@@ -27,6 +49,23 @@ export const linkResolver: PresentationPluginOptions['resolve'] = {
           {
             title: doc?.title || 'Untitled',
             href: `/${doc?.slug}`,
+          },
+          // {title: 'Home', href: `/`},
+        ],
+      }),
+    }),
+    product: defineLocations({
+      // Select one or more fields
+      select: {
+        title: 'title',
+        slug: 'slug.current',
+      },
+      // Those fields are available in the resolve callback function
+      resolve: (doc) => ({
+        locations: [
+          {
+            title: doc?.title || 'Untitled',
+            href: `/product/${doc?.slug}`,
           },
           // {title: 'Home', href: `/`},
         ],
