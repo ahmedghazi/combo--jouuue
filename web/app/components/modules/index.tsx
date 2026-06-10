@@ -24,6 +24,7 @@ import ModulelogosUI from "./logosUI";
 import { ModulesList } from "@/app/types/extra-types";
 import ModuleTexteImageUI from "./ModuleTextImageUI";
 import ModuleTextUI from "./ModuleTextUI";
+import ModuleListProductUI from "./ListProductUI";
 
 const Modules = ({ modules }: ModulesList) => {
   // console.log(modules);
@@ -60,6 +61,8 @@ const Modules = ({ modules }: ModulesList) => {
         //   return <ModuleListLModulaireUI key={module._key} input={module} />;
         case "listPageUI":
           return <ModuleListPageUI key={module._key} input={module} />;
+        case "listProductUI":
+          return <ModuleListProductUI key={module._key} input={module} />;
         case "imageUI":
           return <ModuleImageUI key={module._key} input={module} />;
         case "marqueeUI":

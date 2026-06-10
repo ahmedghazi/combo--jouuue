@@ -22,6 +22,7 @@ import {
   TextsUI,
   ImagesUI,
   LogosUI,
+  ListProductUI,
 } from "./schema";
 
 export interface ModulesList {
@@ -37,6 +38,7 @@ export interface ModulesList {
     | SanityKeyed<ListCardImageTextUI>
     | SanityKeyed<ListLModulaireUI>
     | SanityKeyed<ListPageUI>
+    | SanityKeyed<ListProductUI>
     | SanityKeyed<MarqueeUI>
     | SanityKeyed<SplitImageTextUI>
     | SanityKeyed<CallOutUI>

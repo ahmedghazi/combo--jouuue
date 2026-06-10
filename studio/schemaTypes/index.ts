@@ -40,6 +40,7 @@ import listPageUI from './objects/modules/listPageUI'
 import sliderCardImageTextUI from './objects/modules/sliderCardImageTextUI'
 import imagesUI from './objects/modules/imagesUI'
 import logosUI from './objects/modules/logosUI'
+import listProductUI from './objects/modules/listProductUI'
 
 export const schemaTypes = [
   home,
@@ -82,5 +83,6 @@ export const schemaTypes = [
   heroSplitScrollUI,
   heroSplitUI,
   sliderCardImageTextUI,
+  listProductUI,
 ]
 export default schemaTypes

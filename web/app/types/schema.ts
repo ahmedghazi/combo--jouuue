@@ -109,6 +109,7 @@ export interface Home extends SanityDocument {
     | SanityKeyed<ImagesUI>
     | SanityKeyed<LogosUI>
     | SanityKeyed<ContactsUI>
+    | SanityKeyed<ListProductUI>
     | SanityKeyed<ListCardImageTextUI>
     | SanityKeyed<ListLModulaireUI>
     | SanityKeyed<ListPageUI>
@@ -199,6 +200,7 @@ export interface PageModulaire extends SanityDocument {
     | SanityKeyed<ImagesUI>
     | SanityKeyed<LogosUI>
     | SanityKeyed<ContactsUI>
+    | SanityKeyed<ListProductUI>
     | SanityKeyed<ListCardImageTextUI>
     | SanityKeyed<ListLModulaireUI>
     | SanityKeyed<ListPageUI>
@@ -268,6 +270,7 @@ export interface Infos extends SanityDocument {
     | SanityKeyed<ImagesUI>
     | SanityKeyed<LogosUI>
     | SanityKeyed<ContactsUI>
+    | SanityKeyed<ListProductUI>
     | SanityKeyed<ListCardImageTextUI>
     | SanityKeyed<ListLModulaireUI>
     | SanityKeyed<ListPageUI>
@@ -300,6 +303,7 @@ export interface Infos extends SanityDocument {
     | SanityKeyed<ImagesUI>
     | SanityKeyed<LogosUI>
     | SanityKeyed<ContactsUI>
+    | SanityKeyed<ListProductUI>
     | SanityKeyed<ListCardImageTextUI>
     | SanityKeyed<ListLModulaireUI>
     | SanityKeyed<ListPageUI>
@@ -580,6 +584,7 @@ export interface Publisher extends SanityDocument {
     | SanityKeyed<ImagesUI>
     | SanityKeyed<LogosUI>
     | SanityKeyed<ContactsUI>
+    | SanityKeyed<ListProductUI>
     | SanityKeyed<ListCardImageTextUI>
     | SanityKeyed<ListLModulaireUI>
     | SanityKeyed<ListPageUI>
@@ -888,6 +893,7 @@ export type ModulesGroup = {
     | SanityKeyed<ImagesUI>
     | SanityKeyed<LogosUI>
     | SanityKeyed<ContactsUI>
+    | SanityKeyed<ListProductUI>
     | SanityKeyed<ListCardImageTextUI>
     | SanityKeyed<ListLModulaireUI>
     | SanityKeyed<ListPageUI>
@@ -1224,6 +1230,7 @@ export type ListLModulaireUI = {
     | SanityKeyed<ImagesUI>
     | SanityKeyed<LogosUI>
     | SanityKeyed<ContactsUI>
+    | SanityKeyed<ListProductUI>
     | SanityKeyed<ListCardImageTextUI>
     | SanityKeyed<ListLModulaireUI>
     | SanityKeyed<ListPageUI>
@@ -1471,6 +1478,30 @@ export type SliderCardImageTextUI = {
    *
    */
   items?: Array<SanityKeyed<CardImageText>>;
+};
+
+export type ListProductUI = {
+  _type: "listProductUI";
+  /**
+   * Titre — `string`
+   *
+   *
+   */
+  title?: string;
+
+  /**
+   * Slug — `slug`
+   *
+   * Click sur generate, ancre servant au sous menu, pour que la page scroll vers cette section
+   */
+  slug?: { _type: "slug"; current: string };
+
+  /**
+   * items — `array`
+   *
+   *
+   */
+  items?: Array<SanityKeyedReference<Product>>;
 };
 
 export type Documents =

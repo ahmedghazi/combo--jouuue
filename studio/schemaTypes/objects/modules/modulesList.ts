@@ -7,6 +7,7 @@ export default [
   {type: 'imagesUI'},
   {type: 'logosUI'},
   {type: 'contactsUI'},
+  {type: 'listProductUI'},
   {type: 'listCardImageTextUI'},
   // {type: 'listLieuUI'},
   // {type: 'listStudioUI'},

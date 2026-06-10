@@ -494,6 +494,11 @@
         }
       }
     }
+    &.module--list-product-ui {
+      .inner {
+        padding: var(--spacing-50);
+      }
+    }
 
     @media all and (max-width: 1300px) {
       &.module--hero-split-scroll-ui {

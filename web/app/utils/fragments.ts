@@ -252,6 +252,15 @@ export const listLPageUI = `
 	}
 `;
 
+export const listLProductUI = `
+	_type == 'listProductUI' => {
+		...,
+		items[]-> {
+			${productCard}
+		}
+	}
+`;
+
 export const callOutUI = `
 	_type == 'callOutUI' => {
 		...,
@@ -390,6 +399,7 @@ export const modules = `
 	${contactsUI},
 	${listStudioUI},
 	${listLPageUI},
+	${listLProductUI},
 	${callOutUI},
 	${listLModulaireUI},
 	${splitImageTextUI},
