@@ -9,14 +9,13 @@ export const _linkResolver = (
   if (!node || !node._type) return "/";
   switch (node._type) {
     case "product":
-      return `/product/${node.slug?.current}`;
+      return node.slug?.current ? `/product/${node.slug.current}` : "/";
     case "publisher":
-      return `/publisher/${node.slug?.current}`;
+      return node.slug?.current ? `/publisher/${node.slug.current}` : "/";
     case "tag":
-      return `/tag/${node.slug?.current}`;
-
+      return node.slug?.current ? `/tag/${node.slug.current}` : "/";
     default:
-      return `/${node.slug?.current}`;
+      return node.slug?.current ? `/${node.slug.current}` : "/";
   }
 };
 
