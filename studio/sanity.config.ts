@@ -12,7 +12,7 @@ import {linkResolver} from './src/linkResolver'
 // import {linkResolver} from './src/linkResolver'
 const devOnlyPlugins = [getStartedPlugin()]
 
-const remoteURL = 'https://combo-editions.vercel.app'
+const remoteURL = 'https://www.combo-editions.com'
 const localURL = 'http://localhost:3000'
 const previewURL = window.location.hostname === 'localhost' ? localURL : remoteURL
 

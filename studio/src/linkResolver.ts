@@ -15,61 +15,45 @@ export const linkResolver: PresentationPluginOptions['resolve'] = {
       }),
     }),
     infos: defineLocations({
-      // Select one or more fields
       select: {
         title: 'title',
         slug: 'slug.current',
       },
-      // Those fields are available in the resolve callback function
-      resolve: (doc) => ({
-        locations: [{title: doc?.title || 'Home', href: `/${doc?.slug}`}],
-      }),
+      resolve: (doc) =>
+        doc?.slug
+          ? {locations: [{title: doc?.title || 'Infos', href: `/${doc.slug}`}]}
+          : {locations: []},
     }),
     catalog: defineLocations({
-      // Select one or more fields
       select: {
         title: 'title',
         slug: 'slug.current',
       },
-      // Those fields are available in the resolve callback function
-      resolve: (doc) => ({
-        locations: [{title: doc?.title || 'Home', href: `/${doc?.slug}`}],
-      }),
+      resolve: (doc) =>
+        doc?.slug
+          ? {locations: [{title: doc?.title || 'Catalog', href: `/${doc.slug}`}]}
+          : {locations: []},
     }),
 
     pageModulaire: defineLocations({
-      // Select one or more fields
       select: {
         title: 'title',
         slug: 'slug.current',
       },
-      // Those fields are available in the resolve callback function
-      resolve: (doc) => ({
-        locations: [
-          {
-            title: doc?.title || 'Untitled',
-            href: `/${doc?.slug}`,
-          },
-          // {title: 'Home', href: `/`},
-        ],
-      }),
+      resolve: (doc) =>
+        doc?.slug
+          ? {locations: [{title: doc?.title || 'Untitled', href: `/${doc.slug}`}]}
+          : {locations: []},
     }),
     product: defineLocations({
-      // Select one or more fields
       select: {
         title: 'title',
         slug: 'slug.current',
       },
-      // Those fields are available in the resolve callback function
-      resolve: (doc) => ({
-        locations: [
-          {
-            title: doc?.title || 'Untitled',
-            href: `/product/${doc?.slug}`,
-          },
-          // {title: 'Home', href: `/`},
-        ],
-      }),
+      resolve: (doc) =>
+        doc?.slug
+          ? {locations: [{title: doc?.title || 'Untitled', href: `/product/${doc.slug}`}]}
+          : {locations: []},
     }),
   },
 }
