@@ -2,10 +2,10 @@ import React from "react";
 import { Home, Infos, Product, Publisher } from "../types/schema";
 
 export const _linkResolver = (
-  node: Home | Infos | Product | Publisher | any
+  node: Home | Infos | Product | Publisher | any,
 ) => {
   // console.log(node);
-  // console.log(node._type);
+  console.log(node._type);
   if (!node || !node._type) return "/";
   switch (node._type) {
     case "product":
