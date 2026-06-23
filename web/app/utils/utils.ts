@@ -5,7 +5,6 @@ export const _linkResolver = (
   node: Home | Infos | Product | Publisher | any,
 ) => {
   // console.log(node);
-  console.log(node._type);
   if (!node || !node._type) return "/";
   switch (node._type) {
     case "product":

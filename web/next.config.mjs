@@ -3,15 +3,17 @@ const nextConfig = {
   async headers() {
     return [
       {
-        source: '/:path*',
+        source: "/:path*",
         headers: [
           {
-            key: 'Content-Security-Policy',
-            value: "frame-ancestors 'self' https://*.sanity.studio",
+            key: "Content-Security-Policy",
+            // value: "frame-ancestors 'self' https://*.sanity.studio",
+            value:
+              "frame-ancestors 'self' http://localhost:3000 http://localhost:3333 https://*.sanity.studio",
           },
         ],
       },
-    ]
+    ];
   },
   images: {
     dangerouslyAllowSVG: true,

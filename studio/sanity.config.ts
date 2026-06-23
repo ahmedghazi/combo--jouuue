@@ -12,13 +12,14 @@ import {linkResolver} from './src/linkResolver'
 // import {linkResolver} from './src/linkResolver'
 const devOnlyPlugins = [getStartedPlugin()]
 
-const remoteURL = 'https://www.combo-editions.com'
+// const remoteURL = 'https://www.combo-editions.com'
+const remoteURL = 'https://combo-editions-git-v2-combo-world.vercel.app/'
 const localURL = 'http://localhost:3000'
 const previewURL = window.location.hostname === 'localhost' ? localURL : remoteURL
 
 export default defineConfig({
   name: 'default',
-  title: 'JOUUUE!',
+  title: 'Combo éditions',
 
   projectId: '46r22z78',
   dataset: 'production',
@@ -32,6 +33,7 @@ export default defineConfig({
     media(),
     presentationTool({
       resolve: linkResolver,
+      title: 'Live preview',
       previewUrl: {
         origin: previewURL,
         previewMode: {
