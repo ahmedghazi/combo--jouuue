@@ -138,6 +138,13 @@ export interface PageModulaire extends SanityDocument {
   seo?: Seo;
 
   /**
+   * Page d'acceuil — `boolean`
+   *
+   *
+   */
+  homePage?: boolean;
+
+  /**
    * Titre — `string`
    *
    * Le nom de la page
@@ -1488,13 +1495,6 @@ export type ListProductUI = {
    *
    */
   title?: string;
-
-  /**
-   * Slug — `slug`
-   *
-   * Click sur generate, ancre servant au sous menu, pour que la page scroll vers cette section
-   */
-  slug?: { _type: "slug"; current: string };
 
   /**
    * items — `array`

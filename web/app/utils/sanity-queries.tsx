@@ -81,24 +81,34 @@ export async function getSettings(): Promise<Settings> {
 /**
  * HOME
  */
-export const HOME_QUIERY = groq`*[_type == "home"][0]{
+// export const HOME_QUIERY = groq`*[_type == "home"][0]{
+//   ...,
+//   seo{
+//     ${seo}
+//   },
+//   slider[]{
+//     ...,
+//     image{
+//       asset->
+//     }
+//   },
+//   products[]->{
+//     ${productCard}
+//   },
+//   modules[]{
+//     ${modules}
+//   },
+// }`;
+export const HOME_QUIERY = groq`*[_type == "pageModulaire" && homePage == true][0]{
   ...,
   seo{
     ${seo}
   },
-  slider[]{
-    ...,
-    image{
-      asset->
-    }
-  },
-  products[]->{
-    ${productCard}
-  },
   modules[]{
     ${modules}
   },
-}`;
+}
+  `;
 
 export async function getHome(): Promise<Home> {
   return client.fetch(HOME_QUIERY, {});

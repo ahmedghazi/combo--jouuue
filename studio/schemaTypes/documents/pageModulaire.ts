@@ -32,6 +32,12 @@ export default defineType({
     }),
 
     defineField({
+      name: 'homePage',
+      type: 'boolean',
+      title: "Page d'acceuil",
+      group: 'editorial',
+    }),
+    defineField({
       name: 'title',
       type: 'string',
       title: 'Titre',
@@ -114,6 +120,15 @@ export default defineType({
       title: 'seo.metaTitle',
       subtitle: 'seo.metaDescription',
       media: 'seo.metaImage',
+      homePage: 'homePage',
+    },
+    prepare(selection) {
+      const {title, subtitle, media, homePage} = selection
+      return {
+        title,
+        subtitle: homePage ? "Page d'accueil" : subtitle,
+        media,
+      }
     },
   },
 })
