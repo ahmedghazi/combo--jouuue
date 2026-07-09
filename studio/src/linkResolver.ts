@@ -39,10 +39,15 @@ export const linkResolver: PresentationPluginOptions['resolve'] = {
       select: {
         title: 'title',
         slug: 'slug.current',
+        homePages: 'homePage',
       },
       resolve: (doc) =>
         doc?.slug
-          ? {locations: [{title: doc?.title || 'Untitled', href: `/${doc.slug}`}]}
+          ? {
+              locations: [
+                {title: doc?.title || 'Untitled', href: doc?.homePages ? '/' : `/${doc.slug}`},
+              ],
+            }
           : {locations: []},
     }),
     product: defineLocations({
