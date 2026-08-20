@@ -1,10 +1,12 @@
 import {defineType, defineField, defineArrayMember} from 'sanity'
 import sku from '../fields/sku'
 import slug from '../fields/slug'
+import {GiBlackBook} from 'react-icons/gi'
 
 export default defineType({
   type: 'document',
   name: 'product',
+  icon: GiBlackBook,
   validation: (Rule) =>
     Rule.custom((fields) => {
       return fields && fields.seo ? true : 'SEO needed'

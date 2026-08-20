@@ -2,12 +2,13 @@ import {defineArrayMember, defineField, defineType} from 'sanity'
 import modulesList from '../objects/modules/modulesList'
 import {InfoOutlineIcon} from '@sanity/icons'
 import slug from '../fields/slug'
+import {CiShop} from 'react-icons/ci'
 
 export default defineType({
   name: 'catalog',
   title: 'Catalog',
   type: 'document',
-  icon: InfoOutlineIcon,
+  icon: CiShop,
   validation: (Rule) =>
     Rule.custom((fields) => {
       return fields && fields.seo ? true : 'SEO needed'
