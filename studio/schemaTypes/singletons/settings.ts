@@ -86,6 +86,15 @@ export default defineType({
     }),
 
     defineField({
+      name: 'comboLogo',
+      title: 'Combo world Logo',
+      type: 'image',
+      options: {
+        accept: 'image/svg+xml',
+      },
+      group: 'footer',
+    }),
+    defineField({
       name: 'footerText',
       type: 'blockContent',
       group: 'footer',

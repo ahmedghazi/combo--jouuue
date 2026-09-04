@@ -72,7 +72,11 @@ export async function getSettings(): Promise<Settings> {
             slug
           }
         }
-      }
+      },
+      comboLogo{
+        ...,
+        asset->
+      },
 
     }`,
   );

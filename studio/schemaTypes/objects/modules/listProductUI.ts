@@ -34,6 +34,11 @@ export default {
       type: 'array',
       of: [{type: 'reference', to: [{type: 'product'}]}],
     }),
+    defineField({
+      name: 'navTags',
+      type: 'array',
+      of: [{type: 'reference', to: [{type: 'tag'}]}],
+    }),
   ],
   preview: {
     select: {

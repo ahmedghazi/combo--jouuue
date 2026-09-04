@@ -40,7 +40,12 @@ export default defineType({
       type: 'seo',
       group: 'seo',
     }),
-
+    defineField({
+      type: 'boolean',
+      name: 'preOrderByEmail',
+      description: 'Activer la précommande par email, remplace le comportement snipcart',
+      group: 'editorial',
+    }),
     defineField({
       type: 'string',
       name: 'title',
@@ -102,6 +107,7 @@ export default defineType({
       type: 'reference',
       name: 'productCategory',
       to: [{type: 'tag'}],
+      group: 'shop',
     }),
     defineField({
       type: 'blockContent',

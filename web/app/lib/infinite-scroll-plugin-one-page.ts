@@ -6,7 +6,7 @@ export function infinitScrollOnePage(
   items: HTMLElement[],
   direction: string,
   onScroll: Function,
-  rootMargin: boolean
+  rootMargin: boolean,
 ) {
   var imagesBoundingRect: any = null,
     // deltaTotal: number = 0,
@@ -24,7 +24,7 @@ export function infinitScrollOnePage(
 
   wrapper.addEventListener(
     "wheel",
-    _.throttle(_onWheel, 2000, { leading: true, trailing: false })
+    _.throttle(_onWheel, 2000, { leading: true, trailing: false }),
   );
   if (window.innerWidth < 1080) {
     wrapper.addEventListener("touchstart", _onTouch);
@@ -142,7 +142,7 @@ export function infinitScrollOnePage(
       //   // if (typeof onScroll === "function") onScroll(nextY);
       // }
       let nextY: number = wrapY(
-        lerpCacheByDirection + index * imagesBoundingRect[index].height
+        lerpCacheByDirection + index * imagesBoundingRect[index].height,
       );
       if (rootMargin) nextY += rootMarginSize;
       el.style.transform = "translate3d(0," + nextY + "px, 0)";

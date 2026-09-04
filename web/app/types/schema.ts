@@ -376,6 +376,18 @@ export interface Settings extends SanityDocument {
   newsletterUrl?: string;
 
   /**
+   * Combo world Logo — `image`
+   *
+   *
+   */
+  comboLogo?: {
+    _type: "image";
+    asset: SanityReference<SanityImageAsset>;
+    crop?: SanityImageCrop;
+    hotspot?: SanityImageHotspot;
+  };
+
+  /**
    * footerText — `blockContent`
    *
    *
@@ -448,6 +460,13 @@ export interface Product extends SanityDocument {
    *
    */
   seo?: Seo;
+
+  /**
+   * preOrderByEmail — `boolean`
+   *
+   * Activer la précommande par email, remplace le comportement snipcart
+   */
+  preOrderByEmail?: boolean;
 
   /**
    * title — `string`
@@ -1502,6 +1521,13 @@ export type ListProductUI = {
    *
    */
   items?: Array<SanityKeyedReference<Product>>;
+
+  /**
+   * navTags — `array`
+   *
+   *
+   */
+  navTags?: Array<SanityKeyedReference<Tag>>;
 };
 
 export type Documents =

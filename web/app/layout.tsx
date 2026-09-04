@@ -51,7 +51,7 @@ export default async function RootLayout({
               <Header settings={settings} />
               <main>{children}</main>
               <Footer settings={settings} />
-              <Logo rotateOnScroll={true} />
+              {/* <Logo rotateOnScroll={true} /> */}
               {(await draftMode()).isEnabled && <VisualEditing />}
 
               <Cursor color='var(--color-blue)' size={20} />

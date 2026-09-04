@@ -6,6 +6,7 @@ import portableTextComponents from "../utils/portableTextComponents";
 import { Settings } from "../types/schema";
 import { _linkResolver, getScrollingElement } from "../utils/utils";
 import Link from "next/link";
+import { urlFor } from "../utils/sanity-utils";
 
 type Props = {
   settings: Settings;
@@ -55,7 +56,7 @@ const Footer = ({ settings }: Props) => {
           </div>
         </div>
         <div className='col-md-4 col-xs-12'>
-          <div
+          {/* <div
             className='image--center  '
             style={
               {
@@ -69,6 +70,30 @@ const Footer = ({ settings }: Props) => {
               alt={""}
               sizes='100vw'
             />
+          </div> */}
+          <div className='logo'>
+            {settings?.comboLogo && (
+              <Image
+                src={urlFor(settings.comboLogo?.asset, 230)}
+                width={
+                  settings.comboLogo.asset?.metadata?.dimensions.width || 230
+                }
+                height={
+                  settings.comboLogo.asset?.metadata?.dimensions.height || 230
+                }
+                alt={"Combo Studio settings.comboLogo"}
+                sizes='100vw'
+                style={{
+                  width: "100%",
+                  height: "auto",
+                  aspectRatio: `${settings.comboLogo.asset?.metadata?.dimensions.width} / ${settings.comboLogo.asset?.metadata?.dimensions.height}`,
+                  // objectFit: "cover",
+                }}
+                blurDataURL={settings.comboLogo.asset?.metadata?.lqip}
+                // placeholder='blur'
+                // placeholder={logo.asset?.metadata?.lqip}
+              />
+            )}
           </div>
         </div>
         <div className='col-md-4 col-xs-12'>

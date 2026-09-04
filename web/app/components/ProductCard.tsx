@@ -20,6 +20,13 @@ const ProductCard = ({ input }: Props) => {
           <h2>{input.title}</h2>
           <div className='publisher'>({input.publisher?.title})</div>
           <div className='price text-blue'>{input.price}€</div>
+          {/* {input.tags && input.tags.length > 0 && (
+            <div className='tags'>
+              {input.tags.map((tag, i) => (
+                <span key={i}>{tag.title}</span>
+              ))}
+            </div>
+          )} */}
         </div>
       </Link>
     </article>

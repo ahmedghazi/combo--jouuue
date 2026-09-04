@@ -12,6 +12,7 @@ import portableTextComponents from "../utils/portableTextComponents";
 import { ProductExtend } from "../types/extend";
 import AddToCart from "./shop/AddToCart";
 import useDeviceDetect from "../hooks/useDeviceDetect";
+import website from "../config/website";
 
 type Props = {
   input: ProductExtend;
@@ -30,6 +31,10 @@ const ContentProduct = ({ input }: Props) => {
       unsubscribe(token);
     };
   }, []);
+
+  const preOrderEmailString = input.preOrderByEmail
+    ? `mailto:${website.email}?subject=${website.title} PREORDER ${input.title}&body=Pre order text`
+    : "Ajouter au panier";
 
   // const { isMobile } = useDeviceDetect();
   return (
@@ -81,7 +86,20 @@ const ContentProduct = ({ input }: Props) => {
           <div className='price text-blue'>{input.price}€</div>
         </div>
         <div className='atc-wrapper'>
-          <AddToCart input={input} />
+          <div className='atc-wrapper'>
+            {input.preOrderByEmail ? (
+              <a
+                // href=
+                href={`mailto:${website.email}?cci=hello@ahmedghazi.com&subject=${website.title}%20Précommande%20${input.title}&body=Bonjour, je souhaite précommander le produit ${input.title}%0A%0AVos infos: nom,email,adresse`}
+                className='btn btn--primary btn--lg'>
+                Commander
+              </a>
+            ) : (
+              <AddToCart input={input} />
+            )}
+          </div>
+
+          {/* <AddToCart input={input} /> */}
         </div>
       </div>
       <div className='body'>

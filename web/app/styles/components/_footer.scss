@@ -1,9 +1,18 @@
 footer {
   padding: var(--space-xl) var(--space-lg) var(--space-lg);
   // text-align: center;
+  position: relative;
+  z-index: 1;
+  background-color: var(--color-primary);
+  color: var(--color-bg);
   .image--center {
     display: flex;
     justify-content: center;
+  }
+  .logo {
+    width: 207px;
+    max-width: 100%;
+    margin: auto;
   }
   @media all and (max-width: $md) {
     padding: var(--space-xl) var(--space-md) var(--space-md);

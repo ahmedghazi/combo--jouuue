@@ -1,0 +1,29 @@
+@import "mixins";
+.cartouche {
+  padding: 0.4em toRem(60);
+  font-family: var(--font-primary-mono);
+  background-color: black;
+  color: white;
+  font-size: var(--text-lg);
+  text-transform: uppercase;
+  white-space: nowrap;
+  &--sm {
+    padding: 0.4em 1em;
+    font-size: var(--text-sm);
+  }
+}
+
+.modules {
+  .card {
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: var(--space-sm);
+    }
+  }
+}
+
+.related {
+  padding-bottom: var(--space-lg);
+}

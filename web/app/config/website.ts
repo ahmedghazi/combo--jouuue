@@ -1,6 +1,6 @@
 const website = {
   pathPrefix: "/", // Prefix for all links. If you deploy your site to example.com/portfolio your pathPrefix should be "portfolio"
-  title: "JOUUUE ! Editions", // Navigation and Site Title
+  title: "COMBO éditions", // Navigation and Site Title
   titleAlt: "SN", // Title for JSONLD
   description:
     "JOUUUE ! Editions : Groupe d'édition littéraire urbain et ambitieux",
@@ -23,6 +23,7 @@ const website = {
   googleAnalyticsID: "",
 
   skipNavId: "reach-skip-nav", // ID for the "Skip to content" a11y feature
+  email: "contact@combo-editions.com",
 };
 
 export default website;

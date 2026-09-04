@@ -360,7 +360,7 @@
           position: relative;
         }
       }
-      // @media all and (max-width: $md) {
+      // @media all and (max-width: variables.$md) {
       //   .scroller {
       //     height: calc(var(--vh) * 100);
       //   }
@@ -497,6 +497,17 @@
     &.module--list-product-ui {
       .inner {
         padding: var(--spacing-50);
+        button {
+          &:hover,
+          &.is-active {
+            color: var(--color-accent);
+          }
+        }
+        .is-filtering {
+          .item:not(.is-selected) {
+            display: none;
+          }
+        }
       }
     }
 

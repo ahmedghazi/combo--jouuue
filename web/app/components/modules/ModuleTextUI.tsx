@@ -11,7 +11,7 @@ const ModuleTextUI = ({ input }: Props) => {
   const { text, width, offset, columns } = input;
 
   return (
-    <section className='module module--text mb-lg'>
+    <section className='module module--text mb-lg-'>
       <div className='inner'>
         <div className='row no-gutter-'>
           <div

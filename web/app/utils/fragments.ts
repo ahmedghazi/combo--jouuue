@@ -50,6 +50,10 @@ export const productCard = `
 	price,
 	publisher->{
     title
+  },
+	tags[]->{
+    title,
+    slug
   }
 `;
 
@@ -257,7 +261,11 @@ export const listLProductUI = `
 		...,
 		items[]-> {
 			${productCard}
-		}
+		},
+		navTags[]->{
+      title,
+      slug
+    }
 	}
 `;
 
