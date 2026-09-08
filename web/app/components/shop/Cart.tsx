@@ -48,20 +48,19 @@ const Cart = () => {
   return (
     <div className='nav--cart' ref={cartRef}>
       <div className='flex gap-sm'>
-        <div
-          className={clsx(
-            "snipcart-items--count",
-            count === 0 ? "slideLeft" : ""
-          )}>
-          [{count}]
-        </div>
-
         <button
           className='snipcart-checkout'
           aria-label='open cart'
           title='open cart'>
           PANIER
         </button>
+        <div
+          className={clsx(
+            "snipcart-items--count",
+            count === 0 ? "slideLeft" : "",
+          )}>
+          [{count}]
+        </div>
       </div>
     </div>
   );

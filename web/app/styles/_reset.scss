@@ -283,8 +283,12 @@ input {
   }
   &[type="search"] {
     -webkit-appearance: textfield;
+    min-width: 7rem;
     &::-webkit-search-decoration {
       -webkit-appearance: none;
+    }
+    &::placeholder {
+      color: inherit;
     }
   }
 }

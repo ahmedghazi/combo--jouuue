@@ -21,9 +21,16 @@ header {
     transform: translateY(-100%);
     opacity: 0;
   }
+  .nav-right ul {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-lg);
+  }
   .logo {
     svg {
       max-width: 10em;
+      width: 10em;
+      height: 100%;
       path {
         fill: var(--color-primary);
       }
@@ -33,6 +40,12 @@ header {
         }
       }
     }
+    &--combo svg {
+      aspect-ratio: 163 / 46;
+    }
+    &--editions svg {
+      aspect-ratio: 313 / 68.42;
+    }
   }
 
   nav {
@@ -40,7 +53,7 @@ header {
     text-transform: uppercase;
     ul {
       gap: 70px;
-      gap: var(--spacing-xl);
+      gap: var(--spacing-lg);
     }
     li {
       position: relative;
@@ -76,7 +89,7 @@ header {
       margin: 0 toRem(155);
       margin: 0;
       ul {
-        gap: toRem(70);
+        // gap: toRem(70);
         .has-submenu > a {
           // color: green;
           pointer-events: none;

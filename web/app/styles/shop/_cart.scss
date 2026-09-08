@@ -12,6 +12,11 @@
     transform: translateX(0%);
     opacity: 1;
     transition: transform 0.2s;
+    position: absolute;
+    right: -1.5em;
+    // top: 50%;
+    // right: 0;
+    // transform: translate(0%, -50%);
     &.slideLeft {
       transform: translateX(100%);
       opacity: 0;

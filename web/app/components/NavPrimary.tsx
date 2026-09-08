@@ -137,7 +137,7 @@ const NavPrimary = ({ input }: Props) => {
                 />
               </li>
             )} */}
-        <li>
+        <li className='sm-only'>
           <Cart />
         </li>
       </ul>
