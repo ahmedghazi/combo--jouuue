@@ -21,6 +21,8 @@ const nextConfig = {
       { hostname: "cdn.sanity.io" },
       // { hostname: "source.unsplash.com" },
     ],
+    loader: "default", // Prevents Vercel's optimization
+    unoptimized: true, // Disables all image optimizations globally
   },
   env: {
     KEY_SENDGRID: "LA CLE API",
